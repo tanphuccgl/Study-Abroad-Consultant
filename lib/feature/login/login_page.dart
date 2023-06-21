@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:study_abroad_consultant/feature/login/login_bloc.dart';
+import 'package:study_abroad_consultant/feature/login/logic/login_bloc.dart';
 import 'package:study_abroad_consultant/feature/sign_up/sign_up_page.dart';
+import 'package:study_abroad_consultant/utils/colors.dart';
 import 'package:study_abroad_consultant/widgets/indicator.dart';
 import 'package:study_abroad_consultant/widgets/input.dart';
 
@@ -18,6 +19,7 @@ class LoginPage extends StatelessWidget {
             resizeToAvoidBottomInset: false,
             backgroundColor: Colors.white,
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: Colors.white,
               elevation: 0,
               iconTheme: const IconThemeData(
@@ -57,22 +59,6 @@ class LoginPage extends StatelessWidget {
                       onChanged: (value) =>
                           context.read<LoginBloc>().onChangedPassword(value),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
-                      ),
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: const Text(
-                            "Forgot Password ?",
-                            style: TextStyle(color: Color(0xff6A707C)),
-                          ),
-                        ),
-                      ),
-                    ),
                     const SizedBox(height: 25),
                     Padding(
                       padding: const EdgeInsets.symmetric(
@@ -85,7 +71,7 @@ class LoginPage extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: MaterialButton(
-                                    color: const Color(0xFF6FC9E5),
+                                    color: XColors.primary,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
                                     ),
@@ -108,92 +94,6 @@ class LoginPage extends StatelessWidget {
                             ),
                     ),
                     const SizedBox(height: 20),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Divider(
-                              color: Color(0xffE8ECF4),
-                              thickness: 1,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Text("Or Login With"),
-                          ),
-                          Expanded(
-                            child: Divider(
-                              color: Color(0xffE8ECF4),
-                              thickness: 1,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color(0xffE8ECF4),
-                                  ),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Image.asset(
-                                  "assets/icons/fb.png",
-                                  height: 32,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color(0xffE8ECF4),
-                                  ),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Image.asset(
-                                  "assets/icons/google.png",
-                                  height: 32,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color(0xffE8ECF4),
-                                  ),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Image.asset(
-                                  "assets/icons/apple.png",
-                                  height: 32,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Row(

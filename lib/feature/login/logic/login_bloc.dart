@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:study_abroad_consultant/network/domain_manager.dart';
+import 'package:study_abroad_consultant/utils/toast_wrapper.dart';
 
 part 'login_state.dart';
 
@@ -22,8 +23,7 @@ class LoginBloc extends Cubit<LoginState> {
   Future<void> onLogin(BuildContext context) async {
     emit(state.copyWith(isLoading: true));
     if (state.email.isEmpty || state.password.isEmpty) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Error')));
+      XToast.error("Error");
 
       emit(state.copyWith(isLoading: false));
       return;
@@ -38,8 +38,7 @@ class LoginBloc extends Cubit<LoginState> {
       // Navigator.push(context,
       //     MaterialPageRoute(builder: (context) => const HomePageScreen()));
     } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Error')));
+      XToast.error("Error");
     }
 
     emit(state.copyWith(isLoading: false));
