@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:study_abroad_consultant/network/domain_manager.dart';
 import 'package:study_abroad_consultant/network/model/user.dart';
+import 'package:study_abroad_consultant/utils/toast_wrapper.dart';
 import 'package:uuid/uuid.dart';
 
 part "sign_up_state.dart";
@@ -38,8 +39,7 @@ class SignUpBloc extends Cubit<SignUpState> {
         state.rePassword.isEmpty ||
         state.email.isEmpty ||
         state.password != state.rePassword) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Error')));
+      XToast.error("Error");
 
       emit(state.copyWith(isLoading: false));
       return;
@@ -54,8 +54,7 @@ class SignUpBloc extends Cubit<SignUpState> {
     if (result.isSuccess) {
       Navigator.pop(context);
     } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Error')));
+      XToast.error("Error");
 
       emit(state.copyWith(isLoading: false));
     }
