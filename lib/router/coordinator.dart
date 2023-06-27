@@ -32,4 +32,21 @@ class XCoordinator {
       );
 
   static Future showDashboard() => pushNamed(XRouterName.dashboard);
+
+  static Future showNation() => pushNamed(XRouterName.nation);
+  static Future showDetailNation() => pushNamed(XRouterName.detailNation);
+  static Future showCity() => pushNamed(XRouterName.city);
+  static Future showSchool() => pushNamed(XRouterName.school);
+  static Future showVisa() => pushNamed(XRouterName.visa);
+  static Future showRegisterEvent() => pushNamed(XRouterName.registerEvent);
+  static Future showForm() => pushNamed(XRouterName.form);
+  static Future showEvent() => pushNamed(XRouterName.event);
+
+  static Future showEventDetail() => pushNamed(XRouterName.eventDetail);
+  static Future showStudyAbroad() => pushNamed(XRouterName.studyAbroad);
+  static Future showSupport() => pushNamed(XRouterName.support);
+
+  static Future showProfile() => pushNamed(XRouterName.profile);
+
+  static Future showUpdateProfile() => pushNamed(XRouterName.updateProfile);
 }
