@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_abroad_consultant/feature/login/login_page.dart';
-import 'package:study_abroad_consultant/feature/sign_up/sign_up_bloc.dart';
+import 'package:study_abroad_consultant/feature/sign_up/logic/sign_up_bloc.dart';
 import 'package:study_abroad_consultant/widgets/indicator.dart';
 import 'package:study_abroad_consultant/widgets/input.dart';
 
@@ -103,92 +103,6 @@ class SignUpPage extends StatelessWidget {
                             ),
                     ),
                     const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
-                      ),
-                      child: Row(
-                        children: [
-                          const Expanded(
-                            child: Divider(
-                              color: Color(0xffE8ECF4),
-                              thickness: 1,
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Text("Or Register With"),
-                          ),
-                          const Expanded(
-                            child: Divider(
-                              color: Color(0xffE8ECF4),
-                              thickness: 1,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color(0xffE8ECF4),
-                                  ),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Image.asset(
-                                  "assets/icons/fb.png",
-                                  height: 32,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color(0xffE8ECF4),
-                                  ),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Image.asset(
-                                  "assets/icons/google.png",
-                                  height: 32,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color(0xffE8ECF4),
-                                  ),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Image.asset(
-                                  "assets/icons/apple.png",
-                                  height: 32,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Row(
