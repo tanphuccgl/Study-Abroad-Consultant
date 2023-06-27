@@ -66,7 +66,7 @@ extension PageIndexExt on PageIndex {
       // case PageIndex.studentCard:
       //   return const CardStudentWrapperPage();
       case PageIndex.myUser:
-      //   return const MyUserWrapperPage();
+        return const MyUserWrapperPage();
 
       default:
         return const NotFoundPage();

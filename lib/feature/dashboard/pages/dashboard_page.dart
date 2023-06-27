@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_abroad_consultant/feature/float_bottom_navigation/cubit/bottom_navigation_bloc.dart';
 import 'package:study_abroad_consultant/feature/float_bottom_navigation/pages/float_bottom_navigation.dart';
 import 'package:study_abroad_consultant/feature/home/router/home_router.dart';
+import 'package:study_abroad_consultant/feature/my_user/router/profile_router.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -12,7 +13,7 @@ class DashboardPage extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(create: (_) => HomeCoordinator()),
-        // RepositoryProvider(create: (_) => MyUserCoordinator()),
+        RepositoryProvider(create: (_) => MyUserCoordinator()),
         // RepositoryProvider(create: (_) => CardStudentCoordinator()),
         // RepositoryProvider(create: (_) => ScheduleCoordinator()),
       ],

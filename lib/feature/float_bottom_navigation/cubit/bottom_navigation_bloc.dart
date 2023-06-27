@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_abroad_consultant/feature/home/router/home_wrapper_router.dart';
+import 'package:study_abroad_consultant/feature/my_user/router/profile_wrapper_router.dart';
 import 'package:study_abroad_consultant/utils/colors.dart';
 import 'package:study_abroad_consultant/widgets/not_found_page.dart';
 

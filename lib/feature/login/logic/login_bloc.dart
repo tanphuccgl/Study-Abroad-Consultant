@@ -22,24 +22,23 @@ class LoginBloc extends Cubit<LoginState> {
   }
 
   Future<void> onLogin(BuildContext context) async {
-    XCoordinator.showDashboard();
-    // emit(state.copyWith(isLoading: true));
-    // if (state.email.isEmpty || state.password.isEmpty) {
-    //   XToast.error("Error");
+    emit(state.copyWith(isLoading: true));
+    if (state.email.isEmpty || state.password.isEmpty) {
+      XToast.error("Error");
 
-    //   emit(state.copyWith(isLoading: false));
-    //   return;
-    // }
+      emit(state.copyWith(isLoading: false));
+      return;
+    }
 
-    // final result = await _domain.userRepository.login(
-    //   password: state.password,
-    //   email: state.email,
-    // );
-    // if (result.isSuccess) {
-    //   XCoordinator.showDashboard();
-    // } else {
-    //   XToast.error("Error");
-    // }
+    final result = await _domain.userRepository.login(
+      password: state.password,
+      email: state.email,
+    );
+    if (result.isSuccess) {
+      XCoordinator.showDashboard();
+    } else {
+      XToast.error("Error");
+    }
 
     emit(state.copyWith(isLoading: false));
   }
