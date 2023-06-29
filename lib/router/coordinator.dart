@@ -49,4 +49,11 @@ class XCoordinator {
   static Future showProfile() => pushNamed(XRouterName.profile);
 
   static Future showUpdateProfile() => pushNamed(XRouterName.updateProfile);
+  static Future showCustomerList() => pushNamed(XRouterName.customerList);
+  static Future showCustomerDetail() => pushNamed(XRouterName.customerDetail);
+  static Future showCreateArticle() => pushNamed(XRouterName.createArticle);
+  static Future showCreateEvent() => pushNamed(XRouterName.createEvent);
+  static Future showFormList() => pushNamed(XRouterName.formList);
+  static Future showdangkytuvanduhoc() =>
+      pushNamed(XRouterName.dangkytuvanduhoc);
 }
