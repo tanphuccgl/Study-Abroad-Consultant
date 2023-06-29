@@ -12,6 +12,30 @@ class HomePage extends StatelessWidget {
         child: ListView(
           shrinkWrap: true,
           children: [
+            item("Admin hồ sơ khách hàng đăng kí du học", () {
+              XCoordinator.showCustomerList();
+            }),
+            const SizedBox(
+              height: 20,
+            ),
+            item("admin tao bài viet", () {
+              XCoordinator.showCreateArticle();
+            }),
+            const SizedBox(
+              height: 20,
+            ),
+            item("admin tao su kien", () {
+              XCoordinator.showCreateEvent();
+            }),
+            const SizedBox(
+              height: 20,
+            ),
+            item("admin danh sach yeu cau tu van du hoc", () {
+              XCoordinator.showFormList();
+            }),
+            const SizedBox(
+              height: 20,
+            ),
             item("QUỐC GIA", () {
               XCoordinator.showNation();
             }),

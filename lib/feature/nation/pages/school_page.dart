@@ -139,7 +139,14 @@ class StudyAbroadUniversityDetailPage extends StatelessWidget {
                       // Add your logic here
                       XCoordinator.showForm();
                     },
-                    child: const Text('Apply Now'),
+                    child: const Text('dang ky'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add your logic here
+                      XCoordinator.showdangkytuvanduhoc();
+                    },
+                    child: const Text('tu van'),
                   ),
                   ElevatedButton(
                     onPressed: () {
