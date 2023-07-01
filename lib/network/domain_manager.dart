@@ -1,3 +1,5 @@
+import 'package:study_abroad_consultant/network/data/advice/advice_repository.dart';
+import 'package:study_abroad_consultant/network/data/advice/advice_repository_impl.dart';
 import 'package:study_abroad_consultant/network/data/group/group_repository.dart';
 import 'package:study_abroad_consultant/network/data/group/group_repository_impl.dart';
 import 'package:study_abroad_consultant/network/data/event/event_repository.dart';
@@ -19,6 +21,7 @@ class Domain {
   late EventRepository eventRepository;
   late PostRepository postRepository;
   late RegisterRepository registerRepository;
+  late AdviceRepository adviceRepository;
 
   Domain() {
     userRepository = UserRepositoryImpl();
@@ -27,5 +30,6 @@ class Domain {
     eventRepository = EventRepositoryImpl();
     postRepository = PostRepositoryImpl();
     registerRepository = RegisterRepositoryImpl();
+    adviceRepository = AdviceRepositoryImpl();
   }
 }

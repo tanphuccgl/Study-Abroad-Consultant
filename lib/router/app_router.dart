@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:study_abroad_consultant/feature/advice/pages/advice_detail_page.dart';
+import 'package:study_abroad_consultant/feature/advice/pages/advice_page.dart';
+import 'package:study_abroad_consultant/feature/advice/pages/list_advice_page.dart';
 import 'package:study_abroad_consultant/feature/dashboard/pages/dashboard_page.dart';
 import 'package:study_abroad_consultant/feature/event/pages/update_event_page.dart';
 import 'package:study_abroad_consultant/feature/login/login_page.dart';
@@ -6,7 +9,6 @@ import 'package:study_abroad_consultant/feature/login/login_page.dart';
 import 'package:study_abroad_consultant/feature/city/pages/city_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/contact_support_page.dart';
 
-import 'package:study_abroad_consultant/feature/nation/pages/dang_ky_tuvanduhoc.dart';
 import 'package:study_abroad_consultant/feature/event/pages/detail_event_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/detail_nation_page.dart';
 import 'package:study_abroad_consultant/feature/event/pages/event_page.dart';
@@ -25,6 +27,7 @@ import 'package:study_abroad_consultant/feature/visa/pages/visa_page.dart';
 import 'package:study_abroad_consultant/feature/profile/pages/profile_page.dart';
 import 'package:study_abroad_consultant/feature/profile/pages/update_profile_page.dart';
 import 'package:study_abroad_consultant/feature/sign_up/sign_up_page.dart';
+import 'package:study_abroad_consultant/network/model/advice.dart';
 import 'package:study_abroad_consultant/network/model/city.dart';
 import 'package:study_abroad_consultant/network/model/event.dart';
 import 'package:study_abroad_consultant/network/model/nation.dart';
@@ -131,8 +134,15 @@ class XAppRoute {
             builder: (_) => StudyAbroadRequestListScreen());
 
       case XRouterName.dangkytuvanduhoc:
+        return MaterialPageRoute(builder: (_) => AdvicePage());
+
+      case XRouterName.listAdvice:
+        return MaterialPageRoute(builder: (_) => ListAdvicePage());
+      case XRouterName.detailAdvice:
         return MaterialPageRoute(
-            builder: (_) => StudyAbroadConsultationScreen());
+            builder: (_) => AdviceDetailPage(
+                  register: Advice.empty(),
+                ));
 
       default:
         return MaterialPageRoute(

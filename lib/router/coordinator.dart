@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:study_abroad_consultant/feature/advice/pages/advice_detail_page.dart';
 import 'package:study_abroad_consultant/feature/city/pages/city_page.dart';
 import 'package:study_abroad_consultant/feature/event/pages/create_event_page.dart';
 import 'package:study_abroad_consultant/feature/event/pages/detail_event_page.dart';
@@ -10,6 +11,7 @@ import 'package:study_abroad_consultant/feature/post/pages/update_post_page.dart
 import 'package:study_abroad_consultant/feature/register/pages/register_detail_page.dart';
 import 'package:study_abroad_consultant/feature/university/pages/university_page.dart';
 import 'package:study_abroad_consultant/feature/visa/pages/visa_page.dart';
+import 'package:study_abroad_consultant/network/model/advice.dart';
 import 'package:study_abroad_consultant/network/model/city.dart';
 import 'package:study_abroad_consultant/network/model/event.dart';
 import 'package:study_abroad_consultant/network/model/nation.dart';
@@ -106,4 +108,9 @@ class XCoordinator {
   static Future showFormList() => pushNamed(XRouterName.formList);
   static Future showdangkytuvanduhoc() =>
       pushNamed(XRouterName.dangkytuvanduhoc);
+
+  static Future showListAdvice() => pushNamed(XRouterName.listAdvice);
+
+  static Future showDetailAdvice(Advice register) =>
+      push(AdviceDetailPage(register: register));
 }

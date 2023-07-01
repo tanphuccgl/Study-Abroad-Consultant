@@ -20,6 +20,12 @@ class HomePage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
+                  item("Danh sách tư vấn", () {
+                    XCoordinator.showListAdvice();
+                  }),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   item("admin tao bài viet", () {
                     XCoordinator.showCreateArticle();
                   }),
@@ -48,7 +54,7 @@ class HomePage extends StatelessWidget {
               child: ListView(
                 shrinkWrap: true,
                 children: [
-                  item("QUỐC GIA", () {
+                  item("Quốc gia", () {
                     XCoordinator.showNation();
                   }),
                   const SizedBox(

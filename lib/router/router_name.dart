@@ -30,4 +30,6 @@ class XRouterName {
   static const String createEvent = '/create-event';
   static const String formList = '/form-list';
   static const String dangkytuvanduhoc = '/dangkytuvanduhoc';
+  static const String listAdvice = '/list-advice';
+  static const String detailAdvice = '/detail-advice';
 }
