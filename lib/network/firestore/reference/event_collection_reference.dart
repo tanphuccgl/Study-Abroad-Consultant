@@ -1,22 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:study_abroad_consultant/network/model/common/result.dart';
-import 'package:study_abroad_consultant/network/model/nation.dart';
+import 'package:study_abroad_consultant/network/model/event.dart';
 
 import 'base_collection_reference.dart';
 
-class NationCollectionReference extends BaseCollectionReference<WNation> {
-  NationCollectionReference()
+class EventCollectionReference extends BaseCollectionReference<Event> {
+  EventCollectionReference()
       : super(
           FirebaseFirestore.instance
-              .collection("nation")
-              .withConverter<WNation>(
+              .collection("events")
+              .withConverter<Event>(
                 fromFirestore: ((snapshot, _) =>
-                    WNation.fromDocument(snapshot)),
+                    Event.fromDocument(snapshot)),
                 toFirestore: (model, _) => model.toMap(),
               ),
         );
 
-  Future<XResult<bool>> postWGroup(WNation group) async {
+  Future<XResult<bool>> postWGroup(Event group) async {
     try {
       final userCollection = ref.doc(group.id);
       await userCollection.set(group);
@@ -27,7 +27,7 @@ class NationCollectionReference extends BaseCollectionReference<WNation> {
     }
   }
 
-  Future<XResult<List<WNation>>> getListGroup() async {
+  Future<XResult<List<Event>>> getListGroup() async {
     try {
       final userCollection = await ref.get();
       final list = userCollection.docs.map((e) => e.data()).toList();
@@ -38,7 +38,7 @@ class NationCollectionReference extends BaseCollectionReference<WNation> {
     }
   }
 
-  Future<XResult<WNation>> getInfoGroup(String id) async {
+  Future<XResult<Event>> getInfoGroup(String id) async {
     try {
       var snapshot = await ref.where('id', isEqualTo: id).limit(1).get();
       final result = snapshot.docs.map((e) => e.data()).first;

@@ -11,6 +11,8 @@ class XRouterName {
   static const String form = '/form';
   static const String event = '/event';
   static const String eventDetail = '/event-detail';
+    static const String eventUpdate = '/event-update';
+
   static const String studyAbroad = '/study-abroad';
   static const String support = '/support';
   static const String profile = '/profile';

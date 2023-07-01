@@ -12,7 +12,7 @@ part 'login_state.dart';
 class LoginBloc extends Cubit<LoginState> {
   LoginBloc() : super(const LoginState());
 
-  DomainManager get _domain => GetIt.I<DomainManager>();
+  Domain get _domain => GetIt.I<Domain>();
 
   void onChangedEmail(String value) {
     emit(state.copyWith(email: value));

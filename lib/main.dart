@@ -23,7 +23,7 @@ Future<void> main() async {
 }
 
 void _locator() {
-  GetIt.I.registerLazySingleton(() => DomainManager());
+  GetIt.I.registerLazySingleton(() => Domain());
 }
 
 class MyApp extends StatelessWidget {

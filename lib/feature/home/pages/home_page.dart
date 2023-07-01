@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
                     height: 20,
                   ),
                   item("admin tao su kien", () {
-                    XCoordinator.showCreateEvent();
+                    //    XCoordinator.showCreateEvent();
                   }),
                   const SizedBox(
                     height: 20,
@@ -50,12 +50,6 @@ class HomePage extends StatelessWidget {
                 children: [
                   item("QUỐC GIA", () {
                     XCoordinator.showNation();
-                  }),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  item("Đăng ký tham gia sự kiện tư vấn du học", () {
-                    XCoordinator.showRegisterEvent();
                   }),
                   const SizedBox(
                     height: 20,

@@ -14,7 +14,7 @@ part "sign_up_state.dart";
 class SignUpBloc extends Cubit<SignUpState> {
   SignUpBloc() : super(const SignUpState());
 
-  DomainManager get _domain => GetIt.I<DomainManager>();
+  Domain get _domain => GetIt.I<Domain>();
 
   void onChangedUsername(String value) {
     emit(state.copyWith(username: value));
