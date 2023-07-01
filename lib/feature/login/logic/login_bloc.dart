@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:study_abroad_consultant/network/domain_manager.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
 import 'package:study_abroad_consultant/utils/toast_wrapper.dart';
+import 'package:study_abroad_consultant/utils/user_prefs.dart';
 
 part 'login_state.dart';
 
@@ -35,6 +36,7 @@ class LoginBloc extends Cubit<LoginState> {
       email: state.email,
     );
     if (result.isSuccess) {
+      UserPrefs().saveUser(result.data);
       XCoordinator.showDashboard();
     } else {
       XToast.error("Error");

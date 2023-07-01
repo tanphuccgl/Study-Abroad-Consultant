@@ -7,6 +7,7 @@ import 'package:study_abroad_consultant/router/app_router.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
 import 'package:study_abroad_consultant/router/router_name.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:study_abroad_consultant/utils/user_prefs.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +18,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // await UserPrefs.instance.initialize();
+  await UserPrefs.instance.initialize();
   runApp(const MyApp());
 }
 
