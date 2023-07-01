@@ -1,10 +1,9 @@
-import 'package:study_abroad_consultant/network/data/nation/event_repository.dart';
+import 'package:study_abroad_consultant/network/data/event/event_repository.dart';
 
 import 'package:study_abroad_consultant/network/firestore/reference/event_collection_reference.dart';
 
 import 'package:study_abroad_consultant/network/model/common/result.dart';
 import 'package:study_abroad_consultant/network/model/event.dart';
-
 
 class EventRepositoryImpl extends EventRepository {
   final reference = EventCollectionReference();

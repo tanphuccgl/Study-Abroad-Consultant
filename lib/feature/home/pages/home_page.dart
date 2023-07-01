@@ -60,8 +60,8 @@ class HomePage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  item("các bài viết, hướng dẫn và cẩm nang về du học", () {
-                    XCoordinator.showStudyAbroad();
+                  item("Bài viết", () {
+                    XCoordinator.showPost();
                   }),
                   const SizedBox(
                     height: 20,

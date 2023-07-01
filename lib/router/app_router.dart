@@ -5,7 +5,7 @@ import 'package:study_abroad_consultant/feature/login/login_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/customerlistscreen.dart';
 import 'package:study_abroad_consultant/feature/city/pages/city_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/contact_support_page.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/create_baiviet.dart';
+
 import 'package:study_abroad_consultant/feature/nation/pages/customer_detail.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/dang_ky_tuvanduhoc.dart';
 import 'package:study_abroad_consultant/feature/event/pages/detail_event_page.dart';
@@ -15,8 +15,10 @@ import 'package:study_abroad_consultant/feature/nation/pages/form_apply_page.dar
 import 'package:study_abroad_consultant/feature/nation/pages/list_form.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/nation_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/register_event.dart';
+import 'package:study_abroad_consultant/feature/post/pages/create_post_page.dart';
+import 'package:study_abroad_consultant/feature/post/pages/post_page.dart';
+import 'package:study_abroad_consultant/feature/post/pages/update_post_page.dart';
 import 'package:study_abroad_consultant/feature/university/pages/university_page.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/study_abroad_articles_page.dart';
 import 'package:study_abroad_consultant/feature/event/pages/create_event_page.dart';
 import 'package:study_abroad_consultant/feature/visa/pages/visa_page.dart';
 import 'package:study_abroad_consultant/feature/profile/pages/profile_page.dart';
@@ -25,6 +27,7 @@ import 'package:study_abroad_consultant/feature/sign_up/sign_up_page.dart';
 import 'package:study_abroad_consultant/network/model/city.dart';
 import 'package:study_abroad_consultant/network/model/event.dart';
 import 'package:study_abroad_consultant/network/model/nation.dart';
+import 'package:study_abroad_consultant/network/model/post.dart';
 import 'package:study_abroad_consultant/network/model/university.dart';
 import 'package:study_abroad_consultant/network/model/visa.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
@@ -69,7 +72,7 @@ class XAppRoute {
         return MaterialPageRoute(builder: (_) => StudyAbroadConsultationForm());
 
       case XRouterName.event:
-        return MaterialPageRoute(builder: (_) => const StudyAbroadEventsPage());
+        return MaterialPageRoute(builder: (_) => const EventsPage());
 
       case XRouterName.eventDetail:
         return MaterialPageRoute(
@@ -85,9 +88,22 @@ class XAppRoute {
                   contextEventList: XCoordinator.context,
                 ));
 
-      case XRouterName.studyAbroad:
+      case XRouterName.post:
+        return MaterialPageRoute(builder: (_) => const PostsPage());
+
+      case XRouterName.postCreate:
         return MaterialPageRoute(
-            builder: (_) => const StudyAbroadArticlesScreen());
+            builder: (_) => CreatePostPage(
+                  contextEventList: XCoordinator.context,
+                ));
+
+      case XRouterName.postUpdate:
+        return MaterialPageRoute(
+            builder: (_) => UpdatePostPage(
+                  event: Post.empty(),
+                  contextEventList: XCoordinator.context,
+                ));
+
       case XRouterName.support:
         return MaterialPageRoute(builder: (_) => const ContactSupportScreen());
       case XRouterName.profile:
@@ -99,8 +115,6 @@ class XAppRoute {
 
       case XRouterName.customerDetail:
         return MaterialPageRoute(builder: (_) => const CustomerDetailScreen());
-      case XRouterName.createArticle:
-        return MaterialPageRoute(builder: (_) => const CreateArticleScreen());
 
       case XRouterName.createEvent:
         return MaterialPageRoute(

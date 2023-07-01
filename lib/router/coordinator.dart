@@ -4,11 +4,15 @@ import 'package:study_abroad_consultant/feature/event/pages/create_event_page.da
 import 'package:study_abroad_consultant/feature/event/pages/detail_event_page.dart';
 import 'package:study_abroad_consultant/feature/event/pages/update_event_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/detail_nation_page.dart';
+import 'package:study_abroad_consultant/feature/post/pages/create_post_page.dart';
+import 'package:study_abroad_consultant/feature/post/pages/detail_post_page.dart';
+import 'package:study_abroad_consultant/feature/post/pages/update_post_page.dart';
 import 'package:study_abroad_consultant/feature/university/pages/university_page.dart';
 import 'package:study_abroad_consultant/feature/visa/pages/visa_page.dart';
 import 'package:study_abroad_consultant/network/model/city.dart';
 import 'package:study_abroad_consultant/network/model/event.dart';
 import 'package:study_abroad_consultant/network/model/nation.dart';
+import 'package:study_abroad_consultant/network/model/post.dart';
 import 'package:study_abroad_consultant/network/model/university.dart';
 import 'package:study_abroad_consultant/network/model/visa.dart';
 import 'package:study_abroad_consultant/router/router_name.dart';
@@ -65,12 +69,25 @@ class XCoordinator {
 
   static Future showEvent() => pushNamed(XRouterName.event);
 
+  static Future showCreateEvent(BuildContext contextEventList) =>
+      push(CreateEventPage(contextEventList: contextEventList));
+
   static Future showEventDetail(Event event, BuildContext contextEventList) =>
       push(EventDetailPage(event: event, contextEventList: contextEventList));
 
   static Future showeventUpdate(Event event, BuildContext contextEventList) =>
       push(UpdateEventPage(event: event, contextEventList: contextEventList));
-      
+
+  static Future showPost() => pushNamed(XRouterName.post);
+
+  static Future showCreatePost(BuildContext contextEventList) =>
+      push(CreatePostPage(contextEventList: contextEventList));
+
+  static Future showPostDetail(Post event, BuildContext contextEventList) =>
+      push(DetailPostPage(event: event, contextEventList: contextEventList));
+
+  static Future showPostUpdate(Post event, BuildContext contextEventList) =>
+      push(UpdatePostPage(event: event, contextEventList: contextEventList));
 
   static Future showStudyAbroad() => pushNamed(XRouterName.studyAbroad);
   static Future showSupport() => pushNamed(XRouterName.support);
@@ -81,8 +98,7 @@ class XCoordinator {
   static Future showCustomerList() => pushNamed(XRouterName.customerList);
   static Future showCustomerDetail() => pushNamed(XRouterName.customerDetail);
   static Future showCreateArticle() => pushNamed(XRouterName.createArticle);
-  static Future showCreateEvent(BuildContext contextEventList) =>
-      push(CreateEventPage(contextEventList: contextEventList));
+
   static Future showFormList() => pushNamed(XRouterName.formList);
   static Future showdangkytuvanduhoc() =>
       pushNamed(XRouterName.dangkytuvanduhoc);

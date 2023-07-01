@@ -71,8 +71,6 @@ List<City> germany = [
   hamburgCity,
 ];
 
-
-
 City berlinCity = City(
   id: '10',
   cityName: 'Berlin',
@@ -367,5 +365,3 @@ City lyonCity = City(
   currency: 'Euro (EUR)',
   timeZone: 'Giờ Trung Âu (CET)',
 );
-
-

@@ -4,19 +4,29 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:study_abroad_consultant/feature/event/logic/list_event_bloc.dart';
+import 'package:study_abroad_consultant/feature/post/logic/list_post_bloc.dart';
 import 'package:study_abroad_consultant/network/domain_manager.dart';
-import 'package:study_abroad_consultant/network/model/event.dart';
+import 'package:study_abroad_consultant/network/model/post.dart';
 import 'package:study_abroad_consultant/utils/toast_wrapper.dart';
-import 'package:uuid/uuid.dart';
 
-part "create_event_state.dart";
+part 'update_post_state.dart';
 
-class CreateEventBloc extends Cubit<CreateEventState> {
-  CreateEventBloc()
+class UpdatePostBloc extends Cubit<UpdatePostState> {
+  final Post event;
+  UpdatePostBloc(this.event)
       : super(
-            const CreateEventState(date: "", des: "", location: "", title: ""));
+            const UpdatePostState(date: "", des: "", location: "", title: "")) {
+    init();
+  }
   Domain get _domain => GetIt.I<Domain>();
+
+  void init() {
+    emit(state.copyWith(
+        date: event.date,
+        des: event.author,
+        location: event.content,
+        title: event.title));
+  }
 
   void onChangedTitle(String value) {
     emit(state.copyWith(title: value));
@@ -44,18 +54,20 @@ class CreateEventBloc extends Cubit<CreateEventState> {
       return;
     }
 
-    final result = await _domain.eventRepository.postGroup(Event(
-        id: const Uuid().v4(),
+    final result = await _domain.postRepository.postGroup(Post(
+        id: event.id,
         title: state.title,
-        des: state.des,
+        author: state.des,
         date: state.date,
-        location: state.location));
+        content: state.location));
     if (result.isSuccess) {
       XToast.success("thành công");
-      contextEventList.read<ListEventBloc>().getList();
+      contextEventList.read<ListPostBloc>().getList();
+      Navigator.pop(context);
       Navigator.pop(context);
     } else {
       XToast.success("lỗi");
+      Navigator.pop(context);
       Navigator.pop(context);
     }
   }

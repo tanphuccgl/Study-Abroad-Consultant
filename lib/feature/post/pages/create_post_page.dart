@@ -3,31 +3,29 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:study_abroad_consultant/feature/event/logic/list_event_bloc.dart';
-import 'package:study_abroad_consultant/feature/event/logic/update_event_bloc.dart';
-import 'package:study_abroad_consultant/network/model/event.dart';
+
+import 'package:study_abroad_consultant/feature/post/logic/create_post_bloc.dart';
+import 'package:study_abroad_consultant/feature/post/logic/list_post_bloc.dart';
 import 'package:study_abroad_consultant/widgets/input.dart';
 
-class UpdateEventPage extends StatelessWidget {
+class CreatePostPage extends StatelessWidget {
   final BuildContext contextEventList;
-  final Event event;
-  const UpdateEventPage({
+  const CreatePostPage({
     Key? key,
     required this.contextEventList,
-    required this.event,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: contextEventList.read<ListEventBloc>(),
+      value: contextEventList.read<ListPostBloc>(),
       child: BlocProvider(
-        create: (context) => UpdateEventBloc(event),
-        child: BlocBuilder<UpdateEventBloc, UpdateEventState>(
+        create: (context) => CreatePostBloc(),
+        child: BlocBuilder<CreatePostBloc, CreatePostState>(
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
-                title: const Text('Chỉnh sửa sự kiện'),
+                title: const Text('Tạo bài viết'),
               ),
               body: Padding(
                 padding: const EdgeInsets.all(16),
@@ -37,37 +35,36 @@ class UpdateEventPage extends StatelessWidget {
                     children: [
                       XInput(
                         value: state.title,
-                        hintText: "Tên sự kiện",
+                        hintText: "Tên bài viết",
                         onChanged: (value) => context
-                            .read<UpdateEventBloc>()
+                            .read<CreatePostBloc>()
                             .onChangedTitle(value),
                       ),
                       XInput(
                         value: state.des,
-                        hintText: "Mô tả",
+                        hintText: "Tác giả",
                         onChanged: (value) =>
-                            context.read<UpdateEventBloc>().onChangedDes(value),
+                            context.read<CreatePostBloc>().onChangedDes(value),
                       ),
                       XInput(
                         value: state.date,
                         hintText: "Ngày diễn ra",
-                        onChanged: (value) => context
-                            .read<UpdateEventBloc>()
-                            .onChangedDate(value),
+                        onChanged: (value) =>
+                            context.read<CreatePostBloc>().onChangedDate(value),
                       ),
                       XInput(
                         value: state.location,
-                        hintText: "Địa điểm",
+                        hintText: "Nội dung",
                         onChanged: (value) => context
-                            .read<UpdateEventBloc>()
+                            .read<CreatePostBloc>()
                             .onChangedLocation(value),
                       ),
                       const SizedBox(height: 32),
                       ElevatedButton(
                         onPressed: () => context
-                            .read<UpdateEventBloc>()
+                            .read<CreatePostBloc>()
                             .onCreateButton(context, contextEventList),
-                        child: const Text('Xác nhận'),
+                        child: const Text('Tạo bài viết'),
                       ),
                     ],
                   ),

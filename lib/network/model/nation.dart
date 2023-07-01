@@ -21,15 +21,15 @@ class Nation {
   });
 }
 
-final nationEmpty= Nation(
-    id: '1',
-    name: 'Mỹ',
-    capital: 'Washington, D.C.',
-    officialLanguage: 'Tiếng Anh',
-    educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
-    famousCities: america,
-    topUniversities: universities2,
-  );
+final nationEmpty = Nation(
+  id: '1',
+  name: 'Mỹ',
+  capital: 'Washington, D.C.',
+  officialLanguage: 'Tiếng Anh',
+  educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+  famousCities: america,
+  topUniversities: universities2,
+);
 
 List<Nation> nations = [
   Nation(

@@ -6,8 +6,8 @@ import 'package:study_abroad_consultant/feature/event/logic/list_event_bloc.dart
 import 'package:study_abroad_consultant/network/model/event.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
 
-class StudyAbroadEventsPage extends StatelessWidget {
-  const StudyAbroadEventsPage({super.key});
+class EventsPage extends StatelessWidget {
+  const EventsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

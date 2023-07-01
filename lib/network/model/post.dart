@@ -1,41 +1,41 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, annotate_overrides
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:study_abroad_consultant/network/model/common/base_model.dart';
 
-class Event extends BaseModel {
-  // ignore: annotate_overrides, overridden_fields
+class Post extends BaseModel {
+  // ignore: annotate_overriauthor, overridden_fields
   String id;
   String title;
-  String des;
+  String author;
   String date;
-  String location;
+  String content;
 
-  Event({
+  Post({
     required this.id,
     required this.title,
-    required this.des,
+    required this.author,
     required this.date,
-    required this.location,
+    required this.content,
   });
 
-  static Event fromMap(Map map, {String? id}) {
-    return Event(
+  static Post fromMap(Map map, {String? id}) {
+    return Post(
       id: id ?? map['id'],
       title: map['title'],
-      des: map['des'],
+      author: map['author'],
       date: map['date'],
-      location: map['location'],
+      content: map['content'],
     );
   }
 
-  static Event fromUserPrefs(Map map, {String? id}) {
-    return Event(
+  static Post fromUserPrefs(Map map, {String? id}) {
+    return Post(
       id: id ?? map['id'],
       title: map['title'],
-      des: map['des'],
+      author: map['author'],
       date: map['date'],
-      location: map['location'],
+      content: map['content'],
     );
   }
 
@@ -43,14 +43,14 @@ class Event extends BaseModel {
     return {
       "id": id,
       "title": title,
-      "des": des,
+      "author": author,
       "date": date,
-      "location": location,
+      "content": content,
     };
   }
 
-  factory Event.fromDocument(DocumentSnapshot document) {
-    return Event.fromMap(
+  factory Post.fromDocument(DocumentSnapshot document) {
+    return Post.fromMap(
       document.data() as Map<String, dynamic>,
       id: document.id,
     );
@@ -60,33 +60,33 @@ class Event extends BaseModel {
     return {
       "id": id,
       "title": title,
-      "des": des,
+      "author": author,
       "date": date,
-      "location": location,
+      "content": content,
     };
   }
 
-  factory Event.empty() => Event(
+  factory Post.empty() => Post(
         id: '',
         title: '',
-        des: "",
+        author: "",
         date: '',
-        location: "",
+        content: "",
       );
 
-  Event copyWith({
+  Post copyWith({
     String? id,
     String? title,
-    String? des,
+    String? author,
     String? date,
-    String? location,
+    String? content,
   }) {
-    return Event(
+    return Post(
       id: id ?? this.id,
       title: title ?? this.title,
-      des: des ?? this.des,
+      author: author ?? this.author,
       date: date ?? this.date,
-      location: location ?? this.location,
+      content: content ?? this.content,
     );
   }
 }

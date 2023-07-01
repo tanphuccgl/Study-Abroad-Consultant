@@ -4,18 +4,20 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:study_abroad_consultant/feature/event/logic/list_event_bloc.dart';
+
+import 'package:study_abroad_consultant/feature/post/logic/list_post_bloc.dart';
 import 'package:study_abroad_consultant/network/domain_manager.dart';
-import 'package:study_abroad_consultant/network/model/event.dart';
+
+import 'package:study_abroad_consultant/network/model/post.dart';
 import 'package:study_abroad_consultant/utils/toast_wrapper.dart';
 import 'package:uuid/uuid.dart';
 
-part "create_event_state.dart";
+part "create_post_state.dart";
 
-class CreateEventBloc extends Cubit<CreateEventState> {
-  CreateEventBloc()
+class CreatePostBloc extends Cubit<CreatePostState> {
+  CreatePostBloc()
       : super(
-            const CreateEventState(date: "", des: "", location: "", title: ""));
+            const CreatePostState(date: "", des: "", location: "", title: ""));
   Domain get _domain => GetIt.I<Domain>();
 
   void onChangedTitle(String value) {
@@ -44,15 +46,15 @@ class CreateEventBloc extends Cubit<CreateEventState> {
       return;
     }
 
-    final result = await _domain.eventRepository.postGroup(Event(
+    final result = await _domain.postRepository.postGroup(Post(
         id: const Uuid().v4(),
         title: state.title,
-        des: state.des,
+        author: state.des,
         date: state.date,
-        location: state.location));
+        content: state.location));
     if (result.isSuccess) {
       XToast.success("thành công");
-      contextEventList.read<ListEventBloc>().getList();
+      contextEventList.read<ListPostBloc>().getList();
       Navigator.pop(context);
     } else {
       XToast.success("lỗi");
