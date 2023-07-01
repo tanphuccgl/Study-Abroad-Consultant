@@ -132,27 +132,32 @@ class UniversityPage extends StatelessWidget {
                 style: TextStyle(fontSize: 18, color: Colors.grey[600]),
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  // Add your logic here
-                  XCoordinator.showForm();
-                },
-                child: const Text('dang ky'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Add your logic here
-                  XCoordinator.showdangkytuvanduhoc();
-                },
-                child: const Text('tu van'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  XCoordinator.showVisa(university.visa);
-                  // Add your logic here
-                },
-                child: const Text('Thủ tục nhập cảnh'),
-              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add your logic here
+                      XCoordinator.showForm();
+                    },
+                    child: const Text('Đăng ký du học'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add your logic here
+                      XCoordinator.showdangkytuvanduhoc();
+                    },
+                    child: const Text('Yêu cầu tư vấn'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      XCoordinator.showVisa(university.visa);
+                      // Add your logic here
+                    },
+                    child: const Text('Thủ tục nhập cảnh'),
+                  ),
+                ],
+              )
             ],
           ),
         ),

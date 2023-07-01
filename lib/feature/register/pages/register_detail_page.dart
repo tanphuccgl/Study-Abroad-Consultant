@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/customerlistscreen.dart';
+import 'package:study_abroad_consultant/network/model/register.dart';
 
-class CustomerDetailScreen extends StatelessWidget {
-  const CustomerDetailScreen({super.key});
+class RegisterDetailPage extends StatelessWidget {
+  final Register register;
+  const RegisterDetailPage({super.key, required this.register});
 
   @override
   Widget build(BuildContext context) {
-    final customerProfile = CustomerProfile(
-      name: 'John Doe',
-      address: '123 Main Street',
-      email: 'john.doe@example.com',
-      phoneNumber: '123456789',
-      desiredUniversity: 'ABC University',
-    );
     return Scaffold(
       appBar: AppBar(
         title: const Text('Chi tiết khách hàng'),
@@ -22,13 +16,14 @@ class CustomerDetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+              width: double.infinity,
               padding: const EdgeInsets.all(16.0),
               color: Colors.blue,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Tên: ${customerProfile.name}',
+                    'Tên: ${register.name}',
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -44,7 +39,7 @@ class CustomerDetailScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    customerProfile.desiredUniversity,
+                    register.school,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -73,7 +68,7 @@ class CustomerDetailScreen extends StatelessWidget {
                     child: ListTile(
                       leading: const Icon(Icons.home),
                       title: const Text('Địa chỉ'),
-                      subtitle: Text(customerProfile.address),
+                      subtitle: Text(register.location),
                     ),
                   ),
                   Card(
@@ -81,7 +76,7 @@ class CustomerDetailScreen extends StatelessWidget {
                     child: ListTile(
                       leading: const Icon(Icons.email),
                       title: const Text('Email'),
-                      subtitle: Text(customerProfile.email),
+                      subtitle: Text(register.email),
                     ),
                   ),
                   Card(
@@ -89,7 +84,7 @@ class CustomerDetailScreen extends StatelessWidget {
                     child: ListTile(
                       leading: const Icon(Icons.phone),
                       title: const Text('Số điện thoại'),
-                      subtitle: Text(customerProfile.phoneNumber),
+                      subtitle: Text(register.phone),
                     ),
                   ),
                 ],

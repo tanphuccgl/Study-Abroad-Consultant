@@ -7,12 +7,14 @@ import 'package:study_abroad_consultant/feature/nation/pages/detail_nation_page.
 import 'package:study_abroad_consultant/feature/post/pages/create_post_page.dart';
 import 'package:study_abroad_consultant/feature/post/pages/detail_post_page.dart';
 import 'package:study_abroad_consultant/feature/post/pages/update_post_page.dart';
+import 'package:study_abroad_consultant/feature/register/pages/register_detail_page.dart';
 import 'package:study_abroad_consultant/feature/university/pages/university_page.dart';
 import 'package:study_abroad_consultant/feature/visa/pages/visa_page.dart';
 import 'package:study_abroad_consultant/network/model/city.dart';
 import 'package:study_abroad_consultant/network/model/event.dart';
 import 'package:study_abroad_consultant/network/model/nation.dart';
 import 'package:study_abroad_consultant/network/model/post.dart';
+import 'package:study_abroad_consultant/network/model/register.dart';
 import 'package:study_abroad_consultant/network/model/university.dart';
 import 'package:study_abroad_consultant/network/model/visa.dart';
 import 'package:study_abroad_consultant/router/router_name.dart';
@@ -96,7 +98,9 @@ class XCoordinator {
 
   static Future showUpdateProfile() => pushNamed(XRouterName.updateProfile);
   static Future showCustomerList() => pushNamed(XRouterName.customerList);
-  static Future showCustomerDetail() => pushNamed(XRouterName.customerDetail);
+  static Future showCustomerDetail(Register register) =>
+      push(RegisterDetailPage(register: register));
+
   static Future showCreateArticle() => pushNamed(XRouterName.createArticle);
 
   static Future showFormList() => pushNamed(XRouterName.formList);

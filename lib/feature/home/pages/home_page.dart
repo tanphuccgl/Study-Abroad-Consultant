@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
               child: ListView(
                 shrinkWrap: true,
                 children: [
-                  item("Admin hồ sơ khách hàng đăng kí du học", () {
+                  item("Danh sách đăng kí du học", () {
                     XCoordinator.showCustomerList();
                   }),
                   const SizedBox(

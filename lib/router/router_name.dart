@@ -22,8 +22,9 @@ class XRouterName {
   static const String support = '/support';
   static const String profile = '/profile';
   static const String updateProfile = '/update-profile';
-  static const String customerList = '/customer-list';
-  static const String customerDetail = '/customer-detail';
+
+  static const String customerList = '/register-list';
+  static const String customerDetail = '/register-detail';
 
   static const String createArticle = '/create-article';
   static const String createEvent = '/create-event';
