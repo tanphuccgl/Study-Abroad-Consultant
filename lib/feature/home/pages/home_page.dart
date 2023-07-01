@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
+import 'package:study_abroad_consultant/utils/colors.dart';
 import 'package:study_abroad_consultant/utils/user_prefs.dart';
 
 class HomePage extends StatelessWidget {
@@ -88,7 +89,7 @@ class HomePage extends StatelessWidget {
         width: double.infinity,
         height: 100,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10), color: Colors.red),
+            borderRadius: BorderRadius.circular(10), color: XColors.primary),
         child: Padding(
           padding: const EdgeInsets.only(left: 30),
           child: Align(

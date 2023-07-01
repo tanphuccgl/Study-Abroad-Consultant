@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_abroad_consultant/feature/event/logic/list_event_bloc.dart';
 import 'package:study_abroad_consultant/network/model/event.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
+import 'package:study_abroad_consultant/utils/user_prefs.dart';
 
 class EventsPage extends StatelessWidget {
   const EventsPage({super.key});
@@ -28,11 +29,13 @@ class EventsPage extends StatelessWidget {
                     child: StudyAbroadEventCard(event: state.events[index]));
               },
             ),
-            floatingActionButton: FloatingActionButton(
-                child: const Icon(Icons.add),
-                onPressed: () {
-                  XCoordinator.showCreateEvent(context);
-                }),
+            floatingActionButton: UserPrefs().getUser()?.isAdmin == true
+                ? FloatingActionButton(
+                    child: const Icon(Icons.add),
+                    onPressed: () {
+                      XCoordinator.showCreateEvent(context);
+                    })
+                : null,
           );
         },
       ),

@@ -6,6 +6,7 @@ import 'package:study_abroad_consultant/feature/post/logic/list_post_bloc.dart';
 import 'package:study_abroad_consultant/feature/post/logic/remove_post_bloc.dart';
 import 'package:study_abroad_consultant/network/model/post.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
+import 'package:study_abroad_consultant/utils/user_prefs.dart';
 
 class DetailPostPage extends StatelessWidget {
   final Post event;
@@ -77,17 +78,19 @@ class DetailPostPage extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          ElevatedButton(
-                            onPressed: () => context
-                                .read<RemovePostBloc>()
-                                .remove(context, contextEventList),
-                            child: const Text('Xóa'),
-                          ),
-                          ElevatedButton(
-                            onPressed: () => XCoordinator.showPostUpdate(
-                                event, contextEventList),
-                            child: const Text('Chỉnh sửa'),
-                          ),
+                          if (UserPrefs().getUser()?.isAdmin == true)
+                            ElevatedButton(
+                              onPressed: () => context
+                                  .read<RemovePostBloc>()
+                                  .remove(context, contextEventList),
+                              child: const Text('Xóa'),
+                            ),
+                          if (UserPrefs().getUser()?.isAdmin == true)
+                            ElevatedButton(
+                              onPressed: () => XCoordinator.showPostUpdate(
+                                  event, contextEventList),
+                              child: const Text('Chỉnh sửa'),
+                            ),
                         ],
                       )
                     ],

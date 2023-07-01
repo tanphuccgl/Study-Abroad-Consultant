@@ -7,6 +7,7 @@ import 'package:study_abroad_consultant/router/app_router.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
 import 'package:study_abroad_consultant/router/router_name.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:study_abroad_consultant/utils/colors.dart';
 import 'package:study_abroad_consultant/utils/user_prefs.dart';
 
 Future<void> main() async {
@@ -44,6 +45,16 @@ class MyApp extends StatelessWidget {
       },
       themeMode: ThemeMode.light,
       locale: null,
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          color: XColors.primary,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: XColors.primary,
+          ),
+        ),
+      ),
       supportedLocales: const [Locale('en', '')],
       debugShowCheckedModeBanner: false,
     );

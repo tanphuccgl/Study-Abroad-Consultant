@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_abroad_consultant/feature/post/logic/list_post_bloc.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
+import 'package:study_abroad_consultant/utils/user_prefs.dart';
 
 class PostsPage extends StatelessWidget {
   const PostsPage({super.key});
@@ -72,11 +73,13 @@ class PostsPage extends StatelessWidget {
                 );
               },
             ),
-            floatingActionButton: FloatingActionButton(
-                child: const Icon(Icons.add),
-                onPressed: () {
-                  XCoordinator.showCreatePost(context);
-                }),
+            floatingActionButton: UserPrefs().getUser()?.isAdmin == true
+                ? FloatingActionButton(
+                    child: const Icon(Icons.add),
+                    onPressed: () {
+                      XCoordinator.showCreatePost(context);
+                    })
+                : null,
           );
         },
       ),

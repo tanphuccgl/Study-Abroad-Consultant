@@ -6,6 +6,7 @@ import 'package:study_abroad_consultant/feature/event/logic/list_event_bloc.dart
 import 'package:study_abroad_consultant/feature/event/logic/remove_event_bloc.dart';
 import 'package:study_abroad_consultant/network/model/event.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
+import 'package:study_abroad_consultant/utils/user_prefs.dart';
 
 class EventDetailPage extends StatelessWidget {
   final Event event;
@@ -90,25 +91,24 @@ class EventDetailPage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Register'),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text('Share'),
-                              ),
-                              ElevatedButton(
-                                onPressed: () => context
-                                    .read<RemoveEventBloc>()
-                                    .remove(context, contextEventList),
-                                child: const Text('Xóa'),
-                              ),
-                              ElevatedButton(
-                                onPressed: () => XCoordinator.showeventUpdate(
-                                    event, contextEventList),
-                                child: const Text('Chỉnh sửa'),
-                              ),
+                              if (UserPrefs().getUser()?.isAdmin == false)
+                                ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Register'),
+                                ),
+                              if (UserPrefs().getUser()?.isAdmin == true)
+                                ElevatedButton(
+                                  onPressed: () => context
+                                      .read<RemoveEventBloc>()
+                                      .remove(context, contextEventList),
+                                  child: const Text('Xóa'),
+                                ),
+                              if (UserPrefs().getUser()?.isAdmin == true)
+                                ElevatedButton(
+                                  onPressed: () => XCoordinator.showeventUpdate(
+                                      event, contextEventList),
+                                  child: const Text('Chỉnh sửa'),
+                                ),
                             ],
                           )
                         ],
