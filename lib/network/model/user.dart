@@ -8,12 +8,14 @@ class WUser extends BaseModel {
   String? username;
   String? email;
   String? password;
+  bool isAdmin;
 
   WUser({
     required this.id,
     this.email,
     this.username,
     this.password,
+    this.isAdmin = false,
   });
 
   static WUser fromMap(Map map, {String? id}) {
@@ -22,6 +24,7 @@ class WUser extends BaseModel {
       email: map['email'],
       username: map['username'],
       password: map['password'] ?? '',
+      isAdmin: map['isAdmin'] ?? '',
     );
   }
 
@@ -31,6 +34,7 @@ class WUser extends BaseModel {
       email: map['email'],
       username: map['username'],
       password: map['password'] ?? '',
+      isAdmin: map['isAdmin'] ?? '',
     );
   }
 
@@ -40,6 +44,7 @@ class WUser extends BaseModel {
       "email": email,
       "username": username,
       "password": password,
+      "isAdmin": isAdmin,
     };
   }
 
@@ -56,6 +61,7 @@ class WUser extends BaseModel {
       "email": email,
       "username": username,
       "password": password,
+      "isAdmin": isAdmin,
     };
   }
 
@@ -64,6 +70,7 @@ class WUser extends BaseModel {
         username: '',
         email: '',
         password: "",
+        isAdmin: false,
       );
 
   WUser copyWith({
@@ -71,12 +78,14 @@ class WUser extends BaseModel {
     String? password,
     String? username,
     String? email,
+    bool? isAdmin,
   }) {
     return WUser(
       id: id ?? this.id,
       username: username ?? this.username,
       email: email ?? this.email,
       password: password ?? this.password,
+      isAdmin: isAdmin ?? this.isAdmin,
     );
   }
 }

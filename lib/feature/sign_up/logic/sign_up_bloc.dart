@@ -50,6 +50,7 @@ class SignUpBloc extends Cubit<SignUpState> {
       email: state.email,
       password: state.password,
       username: state.username,
+      isAdmin: false,
     ));
     if (result.isSuccess) {
       Navigator.pop(context);
