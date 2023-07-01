@@ -125,7 +125,7 @@ class DetailNationPage extends StatelessWidget {
     return Column(
       children: [
         GestureDetector(
-          onTap: () => XCoordinator.showSchool(),
+          onTap: () => XCoordinator.showSchool(e),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),

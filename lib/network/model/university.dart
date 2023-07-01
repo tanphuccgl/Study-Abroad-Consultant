@@ -25,6 +25,20 @@ class University {
     required this.ranking,
   });
 }
+
+final emtpyuniversity = University(
+    id: '1',
+    name: 'University of Oxford',
+    country: 'Anh',
+    city: 'Oxford',
+    programs: ['Medicine', 'Law', 'Computer Science', 'Engineering'],
+    website: 'https://www.ox.ac.uk/',
+    tuitionFee: 25000,
+    livingCost: 12000,
+    description: 'The University of Oxford is a prestigious institution known for its academic excellence and rich history.',
+    rating: 4.8,
+    ranking: 1,
+  );
 List<University> universities = [
   University(
     id: '1',

@@ -14,7 +14,7 @@ import 'package:study_abroad_consultant/feature/nation/pages/form_apply_page.dar
 import 'package:study_abroad_consultant/feature/nation/pages/list_form.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/nation_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/register_event.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/school_page.dart';
+import 'package:study_abroad_consultant/feature/university/pages/university_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/study_abroad_articles_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/tao_sukien.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/visa_page.dart';
@@ -23,6 +23,7 @@ import 'package:study_abroad_consultant/feature/profile/pages/update_profile_pag
 import 'package:study_abroad_consultant/feature/sign_up/sign_up_page.dart';
 import 'package:study_abroad_consultant/network/model/city.dart';
 import 'package:study_abroad_consultant/network/model/nation.dart';
+import 'package:study_abroad_consultant/network/model/university.dart';
 import 'package:study_abroad_consultant/router/router_name.dart';
 import 'package:study_abroad_consultant/widgets/not_found_page.dart';
 
@@ -48,8 +49,7 @@ class XAppRoute {
                   city: emtyCity,
                 ));
       case XRouterName.school:
-        return MaterialPageRoute(
-            builder: (_) => const StudyAbroadUniversityDetailPage());
+        return MaterialPageRoute(builder: (_) =>  UniversityPage(university: emtpyuniversity,));
       case XRouterName.visa:
         return MaterialPageRoute(builder: (_) => const UniversityVisaPage());
       case XRouterName.registerEvent:

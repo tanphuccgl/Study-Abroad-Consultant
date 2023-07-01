@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:study_abroad_consultant/network/model/university.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
 
-class StudyAbroadUniversityDetailPage extends StatelessWidget {
-  const StudyAbroadUniversityDetailPage({super.key});
+class UniversityPage extends StatelessWidget {
+  final University university;
+  const UniversityPage({super.key, required this.university});
 
   @override
   Widget build(BuildContext context) {
-    final university = studyAbroadUniversities.first;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('University Detail'),
+        title: const Text('Chi tiết trường học'),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -165,71 +166,3 @@ class StudyAbroadUniversityDetailPage extends StatelessWidget {
   }
 }
 
-class StudyAbroadUniversityDetail {
-  final String name;
-  final String country;
-  final String city;
-  final List<String> programs;
-  final String website;
-  final double tuitionFee;
-  final double livingCost;
-  final String description;
-  final double rating;
-  final int ranking;
-
-  StudyAbroadUniversityDetail({
-    required this.name,
-    required this.country,
-    required this.city,
-    required this.programs,
-    required this.website,
-    required this.tuitionFee,
-    required this.livingCost,
-    required this.description,
-    required this.rating,
-    required this.ranking,
-  });
-}
-
-List<StudyAbroadUniversityDetail> studyAbroadUniversities = [
-  StudyAbroadUniversityDetail(
-    name: 'Harvard University',
-    country: 'Mỹ',
-    city: 'Cambridge',
-    programs: ['Business Administration', 'Computer Science', 'Law'],
-    website: 'https://www.harvard.edu/',
-    tuitionFee: 50000,
-    livingCost: 20000,
-    description:
-        'Harvard University is a prestigious Ivy League institution known for its excellent programs in business, computer science, and law.',
-    rating: 4.8,
-    ranking: 1,
-  ),
-  StudyAbroadUniversityDetail(
-    name: 'Stanford University',
-    country: 'Mỹ',
-    city: 'Stanford',
-    programs: ['Engineering', 'Medicine', 'Humanities'],
-    website: 'https://www.stanford.edu/',
-    tuitionFee: 55000,
-    livingCost: 18000,
-    description:
-        'Stanford University is renowned for its strong programs in engineering, medicine, and humanities, offering students a diverse and enriching educational experience.',
-    rating: 4.7,
-    ranking: 2,
-  ),
-  StudyAbroadUniversityDetail(
-    name: 'University of Oxford',
-    country: 'Anh',
-    city: 'Oxford',
-    programs: ['Physics', 'Economics', 'History'],
-    website: 'https://www.ox.ac.uk/',
-    tuitionFee: 30000,
-    livingCost: 15000,
-    description:
-        'The University of Oxford is one of the oldest and most prestigious universities in the world, offering a wide range of programs in physics, economics, and history.',
-    rating: 4.9,
-    ranking: 3,
-  ),
-  // Thêm các trường đại học khác ở đây
-];
