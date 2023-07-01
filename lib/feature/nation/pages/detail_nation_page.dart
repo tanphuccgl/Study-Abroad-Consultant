@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:study_abroad_consultant/network/model/city.dart';
+import 'package:study_abroad_consultant/network/model/nation.dart';
+import 'package:study_abroad_consultant/network/model/university.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
 
 class DetailNationPage extends StatelessWidget {
-  const DetailNationPage({super.key});
+  final Nation nation;
+  const DetailNationPage({super.key, required this.nation});
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +19,9 @@ class DetailNationPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Quốc gia: Mỹ',
-              style: TextStyle(
+            Text(
+              'Quốc gia: ${nation.name}',
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
@@ -31,9 +35,9 @@ class DetailNationPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'Washington, D.C.',
-              style: TextStyle(fontSize: 16),
+            Text(
+              nation.capital,
+              style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 16),
             const Text(
@@ -44,9 +48,9 @@ class DetailNationPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'Tiếng Anh',
-              style: TextStyle(fontSize: 16),
+            Text(
+              nation.officialLanguage,
+              style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 16),
             const Text(
@@ -57,9 +61,9 @@ class DetailNationPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'Đại học, Cao đẳng, Trung học phổ thông',
-              style: TextStyle(fontSize: 16),
+            Text(
+              nation.educationSystem,
+              style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 24),
             const Text(
@@ -71,14 +75,9 @@ class DetailNationPage extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Row(
-              children: [
-                _buildCityCard('New York City'),
-                const SizedBox(width: 8),
-                _buildCityCard('Los Angeles'),
-                const SizedBox(width: 8),
-                _buildCityCard('San Francisco'),
-              ],
-            ),
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children:
+                    nation.famousCities.map((e) => _buildCityCard(e)).toList()),
             const SizedBox(height: 24),
             const Text(
               'Các trường đại học hàng đầu:',
@@ -87,58 +86,29 @@ class DetailNationPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 8),
-            _buildUniversityCard('Harvard University'),
-            const SizedBox(height: 8),
-            _buildUniversityCard('Stanford University'),
-            const SizedBox(height: 8),
-            _buildUniversityCard('Massachusetts Institute of Technology (MIT)'),
+            const SizedBox(height: 24),
+            ...nation.topUniversities
+                .map((e) => _buildUniversityCard(e))
+                .toList()
           ],
         ),
       ),
     );
   }
 
-  Widget _buildCityCard(String cityName) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: () => XCoordinator.showCity(),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: Colors.blue,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Center(
-              child: Text(
-                cityName,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildUniversityCard(String universityName) {
+  Widget _buildCityCard(City city) {
     return GestureDetector(
-      onTap: () => XCoordinator.showSchool(),
+      onTap: () => XCoordinator.showCity(),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: Colors.green,
+          color: Colors.blue,
         ),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Center(
             child: Text(
-              universityName,
+              city.cityName,
               style: const TextStyle(
                 fontSize: 16,
                 color: Colors.white,
@@ -148,6 +118,36 @@ class DetailNationPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildUniversityCard(University e) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () => XCoordinator.showSchool(),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.green,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Center(
+                child: Text(
+                  e.name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 8),
+      ],
     );
   }
 }

@@ -1,21 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:study_abroad_consultant/network/model/nation.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
 
 class NationPage extends StatelessWidget {
-  final List<String> countries = [
-    'Mỹ',
-    'Anh',
-    'Pháp',
-    'Đức',
-    'Tây Ban Nha',
-    'Ý',
-    'Nhật Bản',
-    'Trung Quốc',
-    'Hàn Quốc',
-    'Úc',
-  ];
-
-  NationPage({super.key});
+  const NationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +12,15 @@ class NationPage extends StatelessWidget {
         title: const Text('Danh sách quốc gia'),
       ),
       body: ListView.builder(
-        itemCount: countries.length,
+        itemCount: nations.length,
         itemBuilder: (BuildContext context, int index) {
-          return _buildCountryCard(countries[index]);
+          return _buildCountryCard(nations[index]);
         },
       ),
     );
   }
 
-  Widget _buildCountryCard(String countryName) {
+  Widget _buildCountryCard(Nation e) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       elevation: 2,
@@ -41,7 +29,7 @@ class NationPage extends StatelessWidget {
       ),
       child: ListTile(
         title: Text(
-          countryName,
+          e.name,
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
@@ -49,9 +37,7 @@ class NationPage extends StatelessWidget {
         ),
         trailing: const Icon(Icons.arrow_forward_ios),
         onTap: () {
-          // Xử lý sự kiện khi người dùng nhấn vào quốc gia
-          // Ví dụ: Chuyển đến trang chi tiết quốc gia
-          XCoordinator.showDetailNation();
+          XCoordinator.showDetailNation(e);
         },
       ),
     );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:study_abroad_consultant/feature/nation/pages/detail_nation_page.dart';
+import 'package:study_abroad_consultant/network/model/nation.dart';
 import 'package:study_abroad_consultant/router/router_name.dart';
 
 class XCoordinator {
@@ -34,7 +36,8 @@ class XCoordinator {
   static Future showDashboard() => pushNamed(XRouterName.dashboard);
 
   static Future showNation() => pushNamed(XRouterName.nation);
-  static Future showDetailNation() => pushNamed(XRouterName.detailNation);
+  static Future showDetailNation(Nation nation) =>
+      push(DetailNationPage(nation: nation));
   static Future showCity() => pushNamed(XRouterName.city);
   static Future showSchool() => pushNamed(XRouterName.school);
   static Future showVisa() => pushNamed(XRouterName.visa);
