@@ -1,26 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:study_abroad_consultant/feature/advice/pages/advice_detail_page.dart';
+import 'package:study_abroad_consultant/feature/advice/pages/advice_page.dart';
+import 'package:study_abroad_consultant/feature/advice/pages/list_advice_page.dart';
 import 'package:study_abroad_consultant/feature/dashboard/pages/dashboard_page.dart';
+import 'package:study_abroad_consultant/feature/event/pages/update_event_page.dart';
 import 'package:study_abroad_consultant/feature/login/login_page.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/customerlistscreen.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/city_page.dart';
+
+import 'package:study_abroad_consultant/feature/city/pages/city_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/contact_support_page.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/create_baiviet.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/customer_detail.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/dang_ky_tuvanduhoc.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/detail_event_page.dart';
+
+import 'package:study_abroad_consultant/feature/event/pages/detail_event_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/detail_nation_page.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/event_page.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/form_apply_page.dart';
+import 'package:study_abroad_consultant/feature/event/pages/event_page.dart';
+import 'package:study_abroad_consultant/feature/register/pages/list_register_page.dart';
+import 'package:study_abroad_consultant/feature/register/pages/register_detail_page.dart';
+import 'package:study_abroad_consultant/feature/register/pages/register_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/list_form.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/nation_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/register_event.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/school_page.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/study_abroad_articles_page.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/tao_sukien.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/visa_page.dart';
+import 'package:study_abroad_consultant/feature/post/pages/create_post_page.dart';
+import 'package:study_abroad_consultant/feature/post/pages/post_page.dart';
+import 'package:study_abroad_consultant/feature/post/pages/update_post_page.dart';
+import 'package:study_abroad_consultant/feature/register_event/pages/list_register_event_page.dart';
+import 'package:study_abroad_consultant/feature/register_event/pages/register_event_page.dart';
+import 'package:study_abroad_consultant/feature/university/pages/university_page.dart';
+import 'package:study_abroad_consultant/feature/event/pages/create_event_page.dart';
+import 'package:study_abroad_consultant/feature/visa/pages/visa_page.dart';
 import 'package:study_abroad_consultant/feature/profile/pages/profile_page.dart';
 import 'package:study_abroad_consultant/feature/profile/pages/update_profile_page.dart';
 import 'package:study_abroad_consultant/feature/sign_up/sign_up_page.dart';
+import 'package:study_abroad_consultant/network/model/advice.dart';
+import 'package:study_abroad_consultant/network/model/city.dart';
+import 'package:study_abroad_consultant/network/model/event.dart';
+import 'package:study_abroad_consultant/network/model/nation.dart';
+import 'package:study_abroad_consultant/network/model/post.dart';
+import 'package:study_abroad_consultant/network/model/register.dart';
+import 'package:study_abroad_consultant/network/model/university.dart';
+import 'package:study_abroad_consultant/network/model/visa.dart';
+import 'package:study_abroad_consultant/router/coordinator.dart';
 import 'package:study_abroad_consultant/router/router_name.dart';
 import 'package:study_abroad_consultant/widgets/not_found_page.dart';
 
@@ -34,28 +51,66 @@ class XAppRoute {
       case XRouterName.dashboard:
         return MaterialPageRoute(builder: (_) => const DashboardPage());
       case XRouterName.nation:
-        return MaterialPageRoute(builder: (_) => NationPage());
+        return MaterialPageRoute(builder: (_) => const NationPage());
       case XRouterName.detailNation:
-        return MaterialPageRoute(builder: (_) => const DetailNationPage());
+        return MaterialPageRoute(
+            builder: (_) => DetailNationPage(
+                  nation: nationEmpty,
+                ));
       case XRouterName.city:
-        return MaterialPageRoute(builder: (_) => const CityPage());
+        return MaterialPageRoute(
+            builder: (_) => CityPage(
+                  city: emtyCity,
+                ));
       case XRouterName.school:
         return MaterialPageRoute(
-            builder: (_) => const StudyAbroadUniversityDetailPage());
+            builder: (_) => UniversityPage(
+                  university: emtpyuniversity,
+                ));
       case XRouterName.visa:
-        return MaterialPageRoute(builder: (_) => const UniversityVisaPage());
+        return MaterialPageRoute(
+            builder: (_) => VisaPage(
+                  universityVisaData: visaEmpty,
+                ));
       case XRouterName.registerEvent:
         return MaterialPageRoute(
             builder: (_) => const EventRegistrationScreen());
       case XRouterName.form:
-        return MaterialPageRoute(builder: (_) => StudyAbroadConsultationForm());
+        return MaterialPageRoute(builder: (_) => RegisterPage());
+
       case XRouterName.event:
-        return MaterialPageRoute(builder: (_) => const StudyAbroadEventsPage());
+        return MaterialPageRoute(builder: (_) => const EventsPage());
+
       case XRouterName.eventDetail:
-        return MaterialPageRoute(builder: (_) => const EventDetailPage());
-      case XRouterName.studyAbroad:
         return MaterialPageRoute(
-            builder: (_) => const StudyAbroadArticlesScreen());
+            builder: (_) => EventDetailPage(
+                  event: Event.empty(),
+                  contextEventList: XCoordinator.context,
+                ));
+
+      case XRouterName.eventUpdate:
+        return MaterialPageRoute(
+            builder: (_) => UpdateEventPage(
+                  event: Event.empty(),
+                  contextEventList: XCoordinator.context,
+                ));
+
+      case XRouterName.post:
+        return MaterialPageRoute(builder: (_) => const PostsPage());
+
+      case XRouterName.postCreate:
+        return MaterialPageRoute(
+            builder: (_) => CreatePostPage(
+                  contextEventList: XCoordinator.context,
+                ));
+
+      case XRouterName.postUpdate:
+        return MaterialPageRoute(
+            builder: (_) => UpdatePostPage(
+                  event: Post.empty(),
+                  contextEventList: XCoordinator.context,
+                ));
+
       case XRouterName.support:
         return MaterialPageRoute(builder: (_) => const ContactSupportScreen());
       case XRouterName.profile:
@@ -63,22 +118,39 @@ class XAppRoute {
       case XRouterName.updateProfile:
         return MaterialPageRoute(builder: (_) => const UpdateProfilePage());
       case XRouterName.customerList:
-        return MaterialPageRoute(builder: (_) => CustomerListScreen());
+        return MaterialPageRoute(builder: (_) => ListRegisterPage());
 
       case XRouterName.customerDetail:
-        return MaterialPageRoute(builder: (_) => const CustomerDetailScreen());
-      case XRouterName.createArticle:
-        return MaterialPageRoute(builder: (_) => const CreateArticleScreen());
+        return MaterialPageRoute(
+            builder: (_) => RegisterDetailPage(
+                  register: Register.empty(),
+                ));
 
       case XRouterName.createEvent:
-        return MaterialPageRoute(builder: (_) => const CreateEventScreen());
+        return MaterialPageRoute(
+            builder: (_) => CreateEventPage(
+                  contextEventList: XCoordinator.context,
+                ));
       case XRouterName.formList:
         return MaterialPageRoute(
             builder: (_) => StudyAbroadRequestListScreen());
 
       case XRouterName.dangkytuvanduhoc:
+        return MaterialPageRoute(builder: (_) => AdvicePage());
+
+      case XRouterName.listAdvice:
+        return MaterialPageRoute(builder: (_) => ListAdvicePage());
+      case XRouterName.detailAdvice:
         return MaterialPageRoute(
-            builder: (_) => StudyAbroadConsultationScreen());
+            builder: (_) => AdviceDetailPage(
+                  register: Advice.empty(),
+                ));
+
+      case XRouterName.registerEvent1:
+        return MaterialPageRoute(builder: (_) => RegisterEventPage());
+
+      case XRouterName.listRegisterEvent:
+        return MaterialPageRoute(builder: (_) => ListRegisterEventPage());
 
       default:
         return MaterialPageRoute(

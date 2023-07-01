@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study_abroad_consultant/feature/my_user/enums/my_user_option.dart';
-import 'package:study_abroad_consultant/router/coordinator.dart';
 import 'package:study_abroad_consultant/utils/colors.dart';
+import 'package:study_abroad_consultant/utils/user_prefs.dart';
 
 class MyUserPage extends StatelessWidget {
   const MyUserPage({super.key});
@@ -16,35 +16,32 @@ class MyUserPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            GestureDetector(
-              onTap: () => XCoordinator.showProfile(),
-              child: const Row(
-                children: [
-                  CircleAvatar(
-                      backgroundImage: AssetImage("XImage.avatar"), radius: 40),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("NGUYEN VAN A",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          )),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text("anvse123456@fpt.edu.vn",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ))
-                    ],
-                  )
-                ],
-              ),
+            Row(
+              children: [
+                const CircleAvatar(
+                    backgroundImage: AssetImage("XImage.avatar"), radius: 40),
+                const SizedBox(
+                  width: 20,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(UserPrefs().getUser()?.username ?? "",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        )),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(UserPrefs().getUser()?.name ?? "",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ))
+                  ],
+                )
+              ],
             ),
             const SizedBox(
               height: 70,

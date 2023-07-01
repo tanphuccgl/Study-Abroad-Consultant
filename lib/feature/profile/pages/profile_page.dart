@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study_abroad_consultant/router/coordinator.dart';
 import 'package:study_abroad_consultant/utils/colors.dart';
+import 'package:study_abroad_consultant/utils/user_prefs.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -9,43 +10,38 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          title: const Text("Profile",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w400,
-                  color: XColors.primary))),
+        title: const Text("Profile"),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(
             height: 70,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                   backgroundImage: AssetImage("XImage.avatar"), radius: 40),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Thịnh",
-                      style: TextStyle(
+                  Text(UserPrefs().getUser()?.username ?? "",
+                      style: const TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.w700,
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text("Lê Trần Đức ",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                      ))
+                  Text(UserPrefs().getUser()?.name ?? "",
+                      style: const TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                      )),
                 ],
               )
             ],
@@ -53,24 +49,15 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(
             height: 70,
           ),
-          _item(
-            Icons.email,
-            "thinhtran2478@gmail.com",
-          ),
+          _item(Icons.email, UserPrefs().getUser()?.email ?? ""),
           const SizedBox(
             height: 40,
           ),
-          _item(
-            Icons.call,
-            "+84 0364035864",
-          ),
+          _item(Icons.call, UserPrefs().getUser()?.phone ?? ""),
           const SizedBox(
             height: 40,
           ),
-          _item(
-            Icons.message,
-            "+84 0364035864",
-          ),
+          _item(Icons.home, UserPrefs().getUser()?.location ?? ""),
           const SizedBox(
             height: 70,
           ),

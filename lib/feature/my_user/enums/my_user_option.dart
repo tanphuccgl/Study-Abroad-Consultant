@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:study_abroad_consultant/router/coordinator.dart';
 
 enum MyUserOption {
-  notification,
-  feedback,
-  event,
-  donate,
+  editProfile,
+
   logout;
 
   String get labelOf {
     switch (this) {
-      case MyUserOption.notification:
-        return 'Notifications';
-      case MyUserOption.feedback:
-        return 'Feedback';
-      case MyUserOption.event:
-        return 'My Event';
-      case MyUserOption.donate:
-        return 'My Donate';
+      case MyUserOption.editProfile:
+        return 'Edit Profile';
+
       case MyUserOption.logout:
         return 'Logout';
     }
@@ -24,6 +18,12 @@ enum MyUserOption {
 
   void onTap() {
     switch (this) {
+      case MyUserOption.editProfile:
+        XCoordinator.showProfile();
+        break;
+      case MyUserOption.logout:
+        XCoordinator.logoutAndShowSignIn();
+        break;
       default:
         break;
     }
@@ -31,14 +31,9 @@ enum MyUserOption {
 
   IconData get iconOf {
     switch (this) {
-      case MyUserOption.notification:
-        return Icons.notifications;
-      case MyUserOption.feedback:
-        return Icons.feedback;
-      case MyUserOption.event:
-        return Icons.event;
-      case MyUserOption.donate:
-        return Icons.monetization_on;
+      case MyUserOption.editProfile:
+        return Icons.person;
+
       case MyUserOption.logout:
         return Icons.logout;
     }

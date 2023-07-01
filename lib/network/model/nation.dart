@@ -1,105 +1,147 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
+import 'package:study_abroad_consultant/network/model/city.dart';
+import 'package:study_abroad_consultant/network/model/university.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
+class Nation {
+  final String id;
+  final String name;
+  final String capital;
+  final String officialLanguage;
+  final String educationSystem;
+  final List<City> famousCities;
+  final List<University> topUniversities;
 
-import 'package:study_abroad_consultant/network/model/common/base_model.dart';
-
-class WNation extends BaseModel {
-  // ignore: annotate_overrides, overridden_fields
-  String id;
-  String quocgia;
-  String ngonngu;
-  String hethonggiaoduc;
-  List<String> thanhpho;
-  List<String> truongdaihoc;
-  WNation({
+  Nation({
     required this.id,
-    required this.quocgia,
-    required this.ngonngu,
-    required this.hethonggiaoduc,
-    required this.thanhpho,
-    required this.truongdaihoc,
+    required this.name,
+    required this.capital,
+    required this.officialLanguage,
+    required this.educationSystem,
+    required this.famousCities,
+    required this.topUniversities,
   });
-
-  WNation copyWith({
-    String? id,
-    String? quocgia,
-    String? ngonngu,
-    String? hethonggiaoduc,
-    List<String>? thanhpho,
-    List<String>? truongdaihoc,
-  }) {
-    return WNation(
-      id: id ?? this.id,
-      quocgia: quocgia ?? this.quocgia,
-      ngonngu: ngonngu ?? this.ngonngu,
-      hethonggiaoduc: hethonggiaoduc ?? this.hethonggiaoduc,
-      thanhpho: thanhpho ?? this.thanhpho,
-      truongdaihoc: truongdaihoc ?? this.truongdaihoc,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'quocgia': quocgia,
-      'ngonngu': ngonngu,
-      'hethonggiaoduc': hethonggiaoduc,
-      'thanhpho': thanhpho,
-      'truongdaihoc': truongdaihoc,
-    };
-  }
-
-  factory WNation.fromMap(Map<String, dynamic> map, {String? id}) {
-    return WNation(
-        id: map['id'] as String,
-        quocgia: map['quocgia'] as String,
-        ngonngu: map['ngonngu'] as String,
-        hethonggiaoduc: map['hethonggiaoduc'] as String,
-        thanhpho: List<String>.from(map['thanhpho'] as List<String>),
-        truongdaihoc: List<String>.from(
-          (map['truongdaihoc'] as List<String>),
-        ));
-  }
-
-  factory WNation.fromDocument(DocumentSnapshot document) {
-    return WNation.fromMap(
-      document.data() as Map<String, dynamic>,
-      id: document.id,
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory WNation.fromJson(String source) =>
-      WNation.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  @override
-  String toString() {
-    return 'WNation(id: $id, quocgia: $quocgia, ngonngu: $ngonngu, hethonggiaoduc: $hethonggiaoduc, thanhpho: $thanhpho, truongdaihoc: $truongdaihoc)';
-  }
-
-  @override
-  bool operator ==(covariant WNation other) {
-    if (identical(this, other)) return true;
-
-    return other.id == id &&
-        other.quocgia == quocgia &&
-        other.ngonngu == ngonngu &&
-        other.hethonggiaoduc == hethonggiaoduc &&
-        listEquals(other.thanhpho, thanhpho) &&
-        listEquals(other.truongdaihoc, truongdaihoc);
-  }
-
-  @override
-  int get hashCode {
-    return id.hashCode ^
-        quocgia.hashCode ^
-        ngonngu.hashCode ^
-        hethonggiaoduc.hashCode ^
-        thanhpho.hashCode ^
-        truongdaihoc.hashCode;
-  }
 }
+
+final nationEmpty = Nation(
+  id: '1',
+  name: 'Mỹ',
+  capital: 'Washington, D.C.',
+  officialLanguage: 'Tiếng Anh',
+  educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+  famousCities: america,
+  topUniversities: universities2,
+);
+
+List<Nation> nations = [
+  Nation(
+    id: '1',
+    name: 'Mỹ',
+    capital: 'Washington, D.C.',
+    officialLanguage: 'Tiếng Anh',
+    educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+    famousCities: america,
+    topUniversities: universities2,
+  ),
+  Nation(
+    id: '2',
+    name: 'Anh',
+    capital: 'London',
+    officialLanguage: 'Tiếng Anh',
+    educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+    famousCities: england,
+    topUniversities: universities,
+  ),
+  Nation(
+      id: '3',
+      name: 'Pháp',
+      capital: 'Paris',
+      officialLanguage: 'Tiếng Pháp',
+      educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+      famousCities: france,
+      topUniversities: universities1),
+  Nation(
+      id: '4',
+      name: 'Đức',
+      capital: 'Berlin',
+      officialLanguage: 'Tiếng Đức',
+      educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+      famousCities: germany,
+      topUniversities: universities3),
+  // Nation(
+  //   id: '5',
+  //   name: 'Tây Ban Nha',
+  //   capital: 'Madrid',
+  //   officialLanguage: 'Tiếng Tây Ban Nha',
+  //   educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+  //   famousCities: ['Madrid', 'Barcelona', 'Seville'],
+  //   topUniversities: [
+  //     'University of Barcelona',
+  //     'Autonomous University of Madrid',
+  //     'Complutense University of Madrid',
+  //   ],
+  // ),
+  // Nation(
+  //   id: '6',
+  //   name: 'Ý',
+  //   capital: 'Rome',
+  //   officialLanguage: 'Tiếng Ý',
+  //   educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+  //   famousCities: ['Rome', 'Milan', 'Florence'],
+  //   topUniversities: [
+  //     'University of Bologna',
+  //     'Sapienza University of Rome',
+  //     'Polytechnic University of Milan',
+  //   ],
+  // ),
+  // Nation(
+  //   id: '7',
+  //   name: 'Nhật Bản',
+  //   capital: 'Tokyo',
+  //   officialLanguage: 'Tiếng Nhật',
+  //   educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+  //   famousCities: ['Tokyo', 'Kyoto', 'Osaka'],
+  //   topUniversities: [
+  //     'University of Tokyo',
+  //     'Kyoto University',
+  //     'Osaka University',
+  //   ],
+  // ),
+  // Nation(
+  //   id: '8',
+  //   name: 'Trung Quốc',
+  //   capital: 'Bắc Kinh',
+  //   officialLanguage: 'Tiếng Trung',
+  //   educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+  //   famousCities: ['Bắc Kinh', 'Thượng Hải', 'Cô Đô'],
+  //   topUniversities: [
+  //     'Tsinghua University',
+  //     'Peking University',
+  //     'Fudan University',
+  //   ],
+  // ),
+  // Nation(
+  //   id: '9',
+  //   name: 'Hàn Quốc',
+  //   capital: 'Seoul',
+  //   officialLanguage: 'Tiếng Hàn',
+  //   educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+  //   famousCities: ['Seoul', 'Busan', 'Incheon'],
+  //   topUniversities: [
+  //     'Seoul National University',
+  //     'KAIST',
+  //     'Yonsei University',
+  //   ],
+  // ),
+  // Nation(
+  //   id: '10',
+  //   name: 'Úc',
+  //   capital: 'Canberra',
+  //   officialLanguage: 'Tiếng Anh',
+  //   educationSystem: 'Đại học, Cao đẳng, Trung học phổ thông',
+  //   famousCities: ['Sydney', 'Melbourne', 'Brisbane'],
+  //   topUniversities: [
+  //     'University of Melbourne',
+  //     'University of Sydney',
+  //     'Australian National University',
+  //   ],
+  // ),
+];

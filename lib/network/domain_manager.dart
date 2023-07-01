@@ -1,23 +1,39 @@
+import 'package:study_abroad_consultant/network/data/advice/advice_repository.dart';
+import 'package:study_abroad_consultant/network/data/advice/advice_repository_impl.dart';
 import 'package:study_abroad_consultant/network/data/group/group_repository.dart';
 import 'package:study_abroad_consultant/network/data/group/group_repository_impl.dart';
-import 'package:study_abroad_consultant/network/data/nation/nation_repository.dart';
-import 'package:study_abroad_consultant/network/data/nation/nation_repository_impl.dart';
+import 'package:study_abroad_consultant/network/data/event/event_repository.dart';
+import 'package:study_abroad_consultant/network/data/event/event_repository_impl.dart';
+import 'package:study_abroad_consultant/network/data/post/post_repository.dart';
+import 'package:study_abroad_consultant/network/data/post/post_repository_impl.dart';
+import 'package:study_abroad_consultant/network/data/register/register_repository.dart';
+import 'package:study_abroad_consultant/network/data/register/register_repository_impl.dart';
+import 'package:study_abroad_consultant/network/data/register_event/register_event_repository.dart';
+import 'package:study_abroad_consultant/network/data/register_event/register_event_repository_impl.dart';
 import 'package:study_abroad_consultant/network/data/student/student_repository.dart';
 import 'package:study_abroad_consultant/network/data/student/student_repository_impl.dart';
 import 'package:study_abroad_consultant/network/data/user/user_repository_impl.dart';
 
 import 'data/user/user_repository.dart';
 
-class DomainManager {
+class Domain {
   late UserRepository userRepository;
   late StudentRepository studentRepository;
   late GroupRepository groupRepository;
-  late NationRepository nationRepository;
+  late EventRepository eventRepository;
+  late PostRepository postRepository;
+  late RegisterRepository registerRepository;
+  late AdviceRepository adviceRepository;
+  late RegisterEventRepository registerEventRepository;
 
-  DomainManager() {
+  Domain() {
     userRepository = UserRepositoryImpl();
     studentRepository = StudentRepositoryImpl();
     groupRepository = GroupRepositoryImpl();
-    nationRepository = NationRepositoryImpl();
+    eventRepository = EventRepositoryImpl();
+    postRepository = PostRepositoryImpl();
+    registerRepository = RegisterRepositoryImpl();
+    adviceRepository = AdviceRepositoryImpl();
+    registerEventRepository = RegisterEventRepositoryImpl();
   }
 }
