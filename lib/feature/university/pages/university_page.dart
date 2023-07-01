@@ -132,31 +132,26 @@ class UniversityPage extends StatelessWidget {
                 style: TextStyle(fontSize: 18, color: Colors.grey[600]),
               ),
               const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // Add your logic here
-                      XCoordinator.showForm();
-                    },
-                    child: const Text('dang ky'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Add your logic here
-                      XCoordinator.showdangkytuvanduhoc();
-                    },
-                    child: const Text('tu van'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      XCoordinator.showVisa();
-                      // Add your logic here
-                    },
-                    child: const Text('Thủ tục nhập cảnh'),
-                  ),
-                ],
+              ElevatedButton(
+                onPressed: () {
+                  // Add your logic here
+                  XCoordinator.showForm();
+                },
+                child: const Text('dang ky'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // Add your logic here
+                  XCoordinator.showdangkytuvanduhoc();
+                },
+                child: const Text('tu van'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  XCoordinator.showVisa(university.visa);
+                  // Add your logic here
+                },
+                child: const Text('Thủ tục nhập cảnh'),
               ),
             ],
           ),
@@ -165,4 +160,3 @@ class UniversityPage extends StatelessWidget {
     );
   }
 }
-

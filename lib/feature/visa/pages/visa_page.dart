@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:study_abroad_consultant/network/model/visa.dart';
 
-class UniversityVisaPage extends StatelessWidget {
-  const UniversityVisaPage({super.key});
+class VisaPage extends StatelessWidget {
+  final UniversityVisaData universityVisaData;
+  const VisaPage({
+    super.key,
+    required this.universityVisaData,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final universityVisaData = universityVisaData1.first;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Visa and Entry Procedures'),
+        title: const Text('Visa và thủ tục nhập cảnh'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -100,63 +104,3 @@ class UniversityVisaPage extends StatelessWidget {
     );
   }
 }
-
-class VisaInformation {
-  final String title;
-  final String description;
-
-  VisaInformation({required this.title, required this.description});
-}
-
-class EntryProcedures {
-  final String title;
-  final String description;
-
-  EntryProcedures({required this.title, required this.description});
-}
-
-class UniversityVisaData {
-  final String universityName;
-  final String countryName;
-  final List<VisaInformation> visaInformation;
-  final List<EntryProcedures> entryProcedures;
-
-  UniversityVisaData({
-    required this.universityName,
-    required this.countryName,
-    required this.visaInformation,
-    required this.entryProcedures,
-  });
-}
-
-List<UniversityVisaData> universityVisaData1 = [
-  UniversityVisaData(
-    universityName: 'Harvard University',
-    countryName: 'Mỹ',
-    visaInformation: [
-      VisaInformation(
-        title: 'Student Visa',
-        description:
-            'You need to apply for a student visa (F-1 visa) to study at Harvard University. The visa process may involve submitting required documents, attending an interview at the U.S. embassy or consulate, and paying the visa application fee.',
-      ),
-      VisaInformation(
-        title: 'Visa Validity',
-        description:
-            'The F-1 student visa allows you to stay in the U.S. for the duration of your academic program. You may also be eligible for Optional Practical Training (OPT) after completing your studies.',
-      ),
-    ],
-    entryProcedures: [
-      EntryProcedures(
-        title: 'Arrival at U.S. Port of Entry',
-        description:
-            'Upon arrival at a U.S. port of entry, you will need to present your valid passport, F-1 visa, I-20 form issued by Harvard University, and any other required documents. The U.S. Customs and Border Protection (CBP) officer will review your documents and may ask questions about your purpose of travel.',
-      ),
-      EntryProcedures(
-        title: 'SEVIS Registration',
-        description:
-            'Once you have arrived in the U.S., you must complete the Student and Exchange Visitor Information System (SEVIS) registration process. This involves providing your local U.S. address, updating your contact information, and confirming your enrollment at Harvard University.',
-      ),
-    ],
-  ),
-  // Thêm thông tin cho các trường đại học khác ở đây
-];

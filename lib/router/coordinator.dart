@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:study_abroad_consultant/feature/city/pages/city_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/detail_nation_page.dart';
 import 'package:study_abroad_consultant/feature/university/pages/university_page.dart';
+import 'package:study_abroad_consultant/feature/visa/pages/visa_page.dart';
 import 'package:study_abroad_consultant/network/model/city.dart';
 import 'package:study_abroad_consultant/network/model/nation.dart';
 import 'package:study_abroad_consultant/network/model/university.dart';
+import 'package:study_abroad_consultant/network/model/visa.dart';
 import 'package:study_abroad_consultant/router/router_name.dart';
 
 class XCoordinator {
@@ -48,7 +50,11 @@ class XCoordinator {
 
   static Future showSchool(University university) =>
       push(UniversityPage(university: university));
-  static Future showVisa() => pushNamed(XRouterName.visa);
+
+  static Future showVisa(UniversityVisaData universityVisaData) =>
+      push(VisaPage(
+        universityVisaData: universityVisaData,
+      ));
   static Future showRegisterEvent() => pushNamed(XRouterName.registerEvent);
   static Future showForm() => pushNamed(XRouterName.form);
   static Future showEvent() => pushNamed(XRouterName.event);
