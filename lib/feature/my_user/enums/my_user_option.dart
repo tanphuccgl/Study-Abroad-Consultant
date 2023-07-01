@@ -21,7 +21,7 @@ enum MyUserOption {
       case MyUserOption.editProfile:
         XCoordinator.showProfile();
         break;
-          case MyUserOption.logout:
+      case MyUserOption.logout:
         XCoordinator.logoutAndShowSignIn();
         break;
       default:

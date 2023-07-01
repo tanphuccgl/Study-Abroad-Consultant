@@ -6,18 +6,18 @@ class UpdateProfileState extends Equatable {
   final String email;
   final String phone;
   final String location;
-   final String username;
+  final String username;
 
   const UpdateProfileState({
     this.name = "",
     this.email = "",
     this.phone = "",
     this.location = "",
-    this.username= "",
+    this.username = "",
   });
 
   @override
-  List<Object?> get props => [name, email, phone, location,username];
+  List<Object?> get props => [name, email, phone, location, username];
 
   UpdateProfileState copyWith({
     String? name,
@@ -31,7 +31,7 @@ class UpdateProfileState extends Equatable {
       email: email ?? this.email,
       phone: phone ?? this.phone,
       location: location ?? this.location,
-      username:username??this.username,
+      username: username ?? this.username,
     );
   }
 }
