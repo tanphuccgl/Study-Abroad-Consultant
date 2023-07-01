@@ -1,33 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:study_abroad_consultant/network/model/city.dart';
 
 class CityPage extends StatelessWidget {
-  const CityPage({super.key});
+  final City city;
+  const CityPage({super.key, required this.city});
 
   @override
   Widget build(BuildContext context) {
-    final city = StudyAbroadCity(
-      cityName: 'New York City',
-      countryName: 'Mỹ',
-      language: 'Tiếng Anh',
-      capital: 'Washington, D.C.',
-      universities: [
-        'Columbia University',
-        'New York University',
-        'Cornell University',
-      ],
-      popularAttractions: [
-        'Statue of Liberty',
-        'Central Park',
-        'Times Square',
-      ],
-      popularCuisines: [
-        'Pizza',
-        'Burger',
-        'Bagel',
-      ],
-      currency: 'Đô la Mỹ (USD)',
-      timeZone: 'Giờ đông Mỹ (EST)',
-    );
     return Scaffold(
       appBar: AppBar(
         title: const Text('Chi tiết thành phố'),
@@ -115,28 +94,4 @@ class CityPage extends StatelessWidget {
       ),
     );
   }
-}
-
-class StudyAbroadCity {
-  final String cityName;
-  final String countryName;
-  final String language;
-  final String capital;
-  final List<String> universities;
-  final List<String> popularAttractions;
-  final List<String> popularCuisines;
-  final String currency;
-  final String timeZone;
-
-  StudyAbroadCity({
-    required this.cityName,
-    required this.countryName,
-    required this.language,
-    required this.capital,
-    required this.universities,
-    required this.popularAttractions,
-    required this.popularCuisines,
-    required this.currency,
-    required this.timeZone,
-  });
 }

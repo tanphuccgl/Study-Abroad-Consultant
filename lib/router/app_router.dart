@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:study_abroad_consultant/feature/dashboard/pages/dashboard_page.dart';
 import 'package:study_abroad_consultant/feature/login/login_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/customerlistscreen.dart';
-import 'package:study_abroad_consultant/feature/nation/pages/city_page.dart';
+import 'package:study_abroad_consultant/feature/city/pages/city_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/contact_support_page.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/create_baiviet.dart';
 import 'package:study_abroad_consultant/feature/nation/pages/customer_detail.dart';
@@ -21,6 +21,7 @@ import 'package:study_abroad_consultant/feature/nation/pages/visa_page.dart';
 import 'package:study_abroad_consultant/feature/profile/pages/profile_page.dart';
 import 'package:study_abroad_consultant/feature/profile/pages/update_profile_page.dart';
 import 'package:study_abroad_consultant/feature/sign_up/sign_up_page.dart';
+import 'package:study_abroad_consultant/network/model/city.dart';
 import 'package:study_abroad_consultant/network/model/nation.dart';
 import 'package:study_abroad_consultant/router/router_name.dart';
 import 'package:study_abroad_consultant/widgets/not_found_page.dart';
@@ -42,7 +43,10 @@ class XAppRoute {
                   nation: nationEmpty,
                 ));
       case XRouterName.city:
-        return MaterialPageRoute(builder: (_) => const CityPage());
+        return MaterialPageRoute(
+            builder: (_) => CityPage(
+                  city: emtyCity,
+                ));
       case XRouterName.school:
         return MaterialPageRoute(
             builder: (_) => const StudyAbroadUniversityDetailPage());

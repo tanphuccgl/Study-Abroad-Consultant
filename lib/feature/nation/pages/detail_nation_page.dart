@@ -98,7 +98,7 @@ class DetailNationPage extends StatelessWidget {
 
   Widget _buildCityCard(City city) {
     return GestureDetector(
-      onTap: () => XCoordinator.showCity(),
+      onTap: () => XCoordinator.showCity(city),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),

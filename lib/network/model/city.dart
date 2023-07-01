@@ -24,6 +24,31 @@ class City {
   });
 }
 
+City emtyCity = City(
+  id: '1',
+  cityName: 'New York City',
+  countryName: 'Mỹ',
+  language: 'Tiếng Anh',
+  capital: 'Washington, D.C.',
+  universities: [
+    'Columbia University',
+    'New York University',
+    'Cornell University',
+  ],
+  popularAttractions: [
+    'Times Square',
+    'Statue of Liberty',
+    'Central Park',
+  ],
+  popularCuisines: [
+    'Pizza',
+    'Hamburger',
+    'Bagel',
+  ],
+  currency: 'Đô la Mỹ (USD)',
+  timeZone: 'Eastern Standard Time (EST)',
+);
+
 List<City> america = [
   newyorkCity,
   losAngelesCity,
