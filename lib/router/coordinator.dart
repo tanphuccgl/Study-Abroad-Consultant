@@ -113,4 +113,8 @@ class XCoordinator {
 
   static Future showDetailAdvice(Advice register) =>
       push(AdviceDetailPage(register: register));
+
+  static Future showRegisterEvent1() => pushNamed(XRouterName.registerEvent1);
+  static Future showlistRegisterEvent() =>
+      pushNamed(XRouterName.listRegisterEvent);
 }

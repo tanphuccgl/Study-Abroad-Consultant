@@ -93,7 +93,8 @@ class EventDetailPage extends StatelessWidget {
                             children: [
                               if (UserPrefs().getUser()?.isAdmin == false)
                                 ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () =>
+                                      XCoordinator.showRegisterEvent1(),
                                   child: const Text('Register'),
                                 ),
                               if (UserPrefs().getUser()?.isAdmin == true)

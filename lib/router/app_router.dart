@@ -21,6 +21,8 @@ import 'package:study_abroad_consultant/feature/nation/pages/register_event.dart
 import 'package:study_abroad_consultant/feature/post/pages/create_post_page.dart';
 import 'package:study_abroad_consultant/feature/post/pages/post_page.dart';
 import 'package:study_abroad_consultant/feature/post/pages/update_post_page.dart';
+import 'package:study_abroad_consultant/feature/register_event/pages/list_register_event_page.dart';
+import 'package:study_abroad_consultant/feature/register_event/pages/register_event_page.dart';
 import 'package:study_abroad_consultant/feature/university/pages/university_page.dart';
 import 'package:study_abroad_consultant/feature/event/pages/create_event_page.dart';
 import 'package:study_abroad_consultant/feature/visa/pages/visa_page.dart';
@@ -143,6 +145,12 @@ class XAppRoute {
             builder: (_) => AdviceDetailPage(
                   register: Advice.empty(),
                 ));
+
+      case XRouterName.registerEvent1:
+        return MaterialPageRoute(builder: (_) => RegisterEventPage());
+
+      case XRouterName.listRegisterEvent:
+        return MaterialPageRoute(builder: (_) => ListRegisterEventPage());
 
       default:
         return MaterialPageRoute(

@@ -32,4 +32,7 @@ class XRouterName {
   static const String dangkytuvanduhoc = '/dangkytuvanduhoc';
   static const String listAdvice = '/list-advice';
   static const String detailAdvice = '/detail-advice';
+
+  static const String registerEvent1 = '/register-event1';
+  static const String listRegisterEvent = '/list-register-event1';
 }

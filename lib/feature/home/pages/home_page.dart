@@ -27,20 +27,20 @@ class HomePage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  item("admin tao bài viet", () {
-                    XCoordinator.showCreateArticle();
+                  item("Danh sách đăng ký sự kiện", () {
+                    XCoordinator.showlistRegisterEvent();
                   }),
                   const SizedBox(
                     height: 20,
                   ),
-                  item("admin tao su kien", () {
-                    //    XCoordinator.showCreateEvent();
+                  item("Sự kiện", () {
+                    XCoordinator.showEvent();
                   }),
                   const SizedBox(
                     height: 20,
                   ),
-                  item("admin danh sach yeu cau tu van du hoc", () {
-                    XCoordinator.showFormList();
+                  item("Bài viết", () {
+                    XCoordinator.showPost();
                   }),
                   const SizedBox(
                     height: 20,
@@ -73,9 +73,9 @@ class HomePage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  item("ContactSupportScreen", () {
-                    XCoordinator.showSupport();
-                  }),
+                  // item("ContactSupportScreen", () {
+                  //   XCoordinator.showSupport();
+                  // }),
                 ],
               ),
             ),

@@ -8,6 +8,8 @@ import 'package:study_abroad_consultant/network/data/post/post_repository.dart';
 import 'package:study_abroad_consultant/network/data/post/post_repository_impl.dart';
 import 'package:study_abroad_consultant/network/data/register/register_repository.dart';
 import 'package:study_abroad_consultant/network/data/register/register_repository_impl.dart';
+import 'package:study_abroad_consultant/network/data/register_event/register_event_repository.dart';
+import 'package:study_abroad_consultant/network/data/register_event/register_event_repository_impl.dart';
 import 'package:study_abroad_consultant/network/data/student/student_repository.dart';
 import 'package:study_abroad_consultant/network/data/student/student_repository_impl.dart';
 import 'package:study_abroad_consultant/network/data/user/user_repository_impl.dart';
@@ -22,6 +24,7 @@ class Domain {
   late PostRepository postRepository;
   late RegisterRepository registerRepository;
   late AdviceRepository adviceRepository;
+  late RegisterEventRepository registerEventRepository;
 
   Domain() {
     userRepository = UserRepositoryImpl();
@@ -31,5 +34,6 @@ class Domain {
     postRepository = PostRepositoryImpl();
     registerRepository = RegisterRepositoryImpl();
     adviceRepository = AdviceRepositoryImpl();
+    registerEventRepository = RegisterEventRepositoryImpl();
   }
 }
